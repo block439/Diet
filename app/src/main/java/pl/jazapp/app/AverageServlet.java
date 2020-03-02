@@ -15,16 +15,23 @@ public class AverageServlet extends HttpServlet {
         resp.setContentType("text.plain");
 
         var numbers = req.getParameter("numbers");
-        String[] numberSplit = numbers.split(",");
-        float sum = 0;
-        for (int i=0; i<numberSplit.length;i++){
-            sum += Integer.parseInt(numberSplit[i]);
+        String[] splitedNumbers = numbers.split(",");
+        double sum = 0;
+        for (int i=0; i<splitedNumbers.length;i++){
+            sum += Integer.parseInt(splitedNumbers[i]);
         }
-        float avg = sum/numberSplit.length;
-//liczby przeliczaja sie na floata trzeba to jeszcze wysplitowac w przypadku 0 na koncu liczby.
+        double avg = sum/splitedNumbers.length;
 
         var writer = resp.getWriter();
 
-        writer.println("I got numbers '"+numbers+"'"+sum+" "+avg);
+        //do rozwiązania opcja z nullem i skrócenie formatowania dla 1.3333 np
+        String roundedAverage = String.valueOf(avg);
+        if(".0".equals(roundedAverage.substring(roundedAverage.length()-2)))
+           writer.println("sub " + roundedAverage.substring(0,roundedAverage.length()-2));
+        else if(numbers == null)
+            writer.println("pusto");
+        else
+            writer.println("zwykla "+ roundedAverage);
+
     }
 }
