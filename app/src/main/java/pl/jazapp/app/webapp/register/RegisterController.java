@@ -3,7 +3,6 @@ package pl.jazapp.app.webapp.register;
 import pl.jazapp.app.UserMap;
 
 import javax.enterprise.context.RequestScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
