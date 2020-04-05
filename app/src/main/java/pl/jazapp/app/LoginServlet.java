@@ -23,7 +23,6 @@ public class LoginServlet extends HttpServlet {
         resp.setStatus(200);
         resp.setContentType("text.plain");
         writer.println(String.format("I am logged: %s", userContext.isLogged()));
-        userContext.login();
 
     }
 }

@@ -21,6 +21,7 @@ public class UserContext implements Serializable {
     public boolean isLogged(){
         return isLogged;
     }
+
     public void login(){
         isLogged =true;
     }

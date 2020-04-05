@@ -13,13 +13,15 @@ public class UserMap {
 
     @Inject
     private UserContext userContext;
+
+    public UserMap(){
+        users.put("admin","admin");
+    }
     
   public void register(String name, String password){
       users.put(name,password);
   }
-  public void start(){
-      users.put("olek","bolek");
-  }
+
   public boolean isRegistered(String name){
       return users.containsKey(name);
   }
