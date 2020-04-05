@@ -1,5 +1,6 @@
 package pl.jazapp.app;
 
+import javax.inject.Inject;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebFilter;
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.nio.file.attribute.UserDefinedFileAttributeView;
 
 @WebFilter("*")
 public class LoginFilter extends HttpFilter {
@@ -25,8 +27,15 @@ public class LoginFilter extends HttpFilter {
                 || "/register.xhtml".equals(req.getServletPath());
     }
 
+    @Inject
+    UserContext userContext;
+
     private boolean isUserLogged() {
-        return false;
+        if(userContext.isLogged()){
+            return true;}
+        else{
+            return false;
+        }
     }
 
 
