@@ -1,0 +1,16 @@
+body{
+    padding: 10px;
+}
+
+.form-group{
+    width: 100%;
+    max-width: 330px;
+    padding: 10px;
+    margin: auto;
+}
+
+.error-message{
+    color: red;
+    font-size: 14px;
+    list-style-type: none;
+}
