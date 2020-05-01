@@ -3,7 +3,7 @@ package pl.jazapp.app;
 
 public class User{
     private String email;
-    private String mobile;
+    private String birthdate;
     private String firstName;
     private String lastName;
     private String password;
@@ -20,8 +20,8 @@ public class User{
         this.email = email;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setBirthdate(String birthdate) {
+        this.birthdate = birthdate;
     }
 
     public String getFirstName() {

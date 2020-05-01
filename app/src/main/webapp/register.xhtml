@@ -15,7 +15,7 @@
         <div class="form-group">
             <h:inputText id="username" styleClass="form-control" a:placeholder="Username"
                          value="#{registerRequest.username}">
-            <f:validateLength minimum="3" maximum="8"/>
+            <f:validateLength minimum="3" maximum="25"/>
                 <f:validator validatorId="usernameValidator"/>
             </h:inputText>
             <h:messages for="username" styleClass="error-message"/>
@@ -25,28 +25,35 @@
         </div>
 
         <div  class="form-group">
-            <h:inputSecret id="email" styleClass="form-control" a:placeholder="Mail"
+            <h:inputText id="email" styleClass="form-control" a:placeholder="Mail"
                            value="#{registerRequest.mail}"/>
         </div>
 
         <div  class="form-group">
-            <h:inputSecret id="first-name" styleClass="form-control" a:placeholder="First Name"
-                           value="#{registerRequest.firstName}"/>
+            <h:inputText id="first-name" styleClass="form-control" a:placeholder="First Name"
+                           value="#{registerRequest.firstName}">
+            <f:validator validatorId="firstNameValidator"/>
+            </h:inputText>
+            <h:message for="first-name" styleClass="error-message"/>
         </div>
 
         <div  class="form-group">
-            <h:inputSecret id="last-name" styleClass="form-control" a:placeholder="Last Name"
-                           value="#{registerRequest.lastName}"/>
+            <h:inputText id="last-name" styleClass="form-control" a:placeholder="Last Name"
+                           value="#{registerRequest.lastName}">
+                <f:validator validatorId="lastNameValidator"/>
+            </h:inputText>
+            <h:message for="last-name" styleClass="error-message"/>
         </div>
 
         <div  class="form-group">
-            <h:inputSecret id="birthdate" styleClass="form-control" a:placeholder="Birthdate"
+            <h:inputText id="birthdate" styleClass="form-control" a:placeholder="Birthdate"
                            value="#{registerRequest.birthdate}"/>
         </div>
 
         <div  class="form-group">
             <h:inputSecret id="password" styleClass="form-control" a:placeholder="Password"
                            value="#{registerRequest.password}"/>
+
         </div>
 
         <div  class="form-group">

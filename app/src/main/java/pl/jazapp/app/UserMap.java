@@ -22,12 +22,12 @@ public class UserMap {
     }
 
     
-  public void register(String name, String password, String firstname, String lastName, String mail, String mobile){
+  public void register(String name, String password, String firstname, String lastName, String mail, String birthdate){
       User user = new User();
       user.setFirstName(firstname);
       user.setLastName(lastName);
       user.setEmail(mail);
-      user.setMobile(mobile);
+      user.setBirthdate(birthdate);
       user.setPassword(password);
       userMap.put(name,user);
   }
@@ -39,6 +39,7 @@ public class UserMap {
   public boolean login (String name, String password){
       if(userMap.containsKey(name) && password.equals(userMap.get(name).getPassword())){
           userContext.login();
+          userContext.setFullName(userMap.get(name).getFirstName(), userMap.get(name).getLastName());
           return true;
       } else return false;
   }

@@ -12,8 +12,8 @@ public class UsernameValidator implements Validator<String> {
 
     @Override
     public void validate(FacesContext context, UIComponent component, String value) throws ValidatorException{
-        if(!value.matches("[a-z]+")){
-            throw new  ValidatorException(new FacesMessage("Username can contain only letters."));
+        if(!value.matches("[a-z0-9]+")){
+            throw new ValidatorException(new FacesMessage("Username can contain only letters."));
         }
     }
 }
