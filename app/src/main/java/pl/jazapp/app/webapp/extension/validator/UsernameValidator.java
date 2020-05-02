@@ -12,9 +12,9 @@ public class UsernameValidator implements Validator<String> {
 
     @Override
     public void validate(FacesContext context, UIComponent component, String value) throws ValidatorException{
-        if(!value.matches("[a-z0-9]+")){
-            throw new ValidatorException(new FacesMessage("Username can contain only letters."));
+        if(!value.matches("[\\p{Ll}0-9]*")){
+            throw new ValidatorException(new FacesMessage("Username can contain only numbers and small letters."));
         }
     }
 }
-//[A-Z][A-Za-zĄąĆćĘęŁłÓóŚśŹźŻż]+
+

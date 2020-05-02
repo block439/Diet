@@ -7,13 +7,11 @@ import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
-@FacesValidator("firstNameValidator")
-public class FirstNameValidator implements Validator<String> {
-
+@FacesValidator("loginValidator")
+public class LoginValidator implements Validator <String> {
     @Override
     public void validate(FacesContext context, UIComponent component, String value) throws ValidatorException {
-        if(!value.matches("^[\\p{Lu}][\\pL]*")){
-            throw new ValidatorException(new FacesMessage("First name can contain only letters"));
-        }
+        if (!value.matches("[\\p{Ll}]{3,25}")){
+            throw new ValidatorException(new FacesMessage("Username or password is too long."));}
     }
 }

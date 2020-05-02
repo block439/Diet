@@ -13,8 +13,8 @@ public class LastNameValidator implements Validator<String> {
 
     @Override
     public void validate(FacesContext context, UIComponent component, String value) throws ValidatorException {
-        if(!value.matches("[A-Z][A-Za-z]+")){
-            throw new ValidatorException(new FacesMessage("Last Name have to start with capital letter"));
+        if(!value.matches("^[\\p{Lu}][\\pL]*")){
+            throw new ValidatorException(new FacesMessage("Last Name can contain only letters."));
         }
     }
 }

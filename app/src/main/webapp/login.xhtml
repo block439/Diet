@@ -3,7 +3,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough" xmlns:f="http://xmlns.jcp.org/jsf/core"
 >
 <h:head>
     <h:outputStylesheet name="main.css" library="css"/>
@@ -16,7 +16,10 @@
 
     <div class="form-group">
         <h:inputText id="login" styleClass="form-control" a:placeholder="Username"
-                     value="#{loginRequest.username}"/>
+                     value="#{loginRequest.username}">
+            <f:validator validatorId="loginValidator"/>
+        </h:inputText>
+        <h:messages styleClass="error-message" for="login"/>
     </div>
 
         <div class="form-group">

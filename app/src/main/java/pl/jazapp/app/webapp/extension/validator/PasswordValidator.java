@@ -7,13 +7,13 @@ import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
-@FacesValidator("firstNameValidator")
-public class FirstNameValidator implements Validator<String> {
+@FacesValidator("passwordValidator")
+public class PasswordValidator implements Validator<String> {
 
     @Override
     public void validate(FacesContext context, UIComponent component, String value) throws ValidatorException {
-        if(!value.matches("^[\\p{Lu}][\\pL]*")){
-            throw new ValidatorException(new FacesMessage("First name can contain only letters"));
+        if(!value.matches("^(?=.*\\p{Ll})(?=.*[\\!\\@\\#\\$\\%\\^\\&\\*\\(\\)\\_\\+\\-\\=0-9])(?=.*[\\p{Lu}])(?!.*\\s).{8,}$")){
+            throw new ValidatorException(new FacesMessage("Password must contain small and large letter and at least one number or special character"));
         }
     }
 }
