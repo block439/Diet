@@ -1,6 +1,5 @@
 package pl.jazapp.app;
 
-import pl.jazapp.app.webapp.login.LoginRequest;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -36,18 +35,8 @@ public class UserMap {
       return userMap.containsKey(name);
   }
 
-  public boolean login (String name, String password){
-      if(userMap.containsKey(name) && password.equals(userMap.get(name).getPassword())){
-          userContext.login();
-          userContext.setFullName(userMap.get(name).getFirstName(), userMap.get(name).getLastName());
-          return true;
-      } else return false;
-  }
-
-
-  public User getFullName(LoginRequest loginRequest){
-        return userMap.get(loginRequest.getUsername());
-
+  public User getUser(String name){
+        return userMap.get(name);
   }
 
 

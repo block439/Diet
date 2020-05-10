@@ -30,16 +30,12 @@ public class LoginFilter extends HttpFilter {
     private boolean isResource(HttpServletRequest req){
         return req.getRequestURI().startsWith(req.getContextPath()+ ResourceHandler.RESOURCE_IDENTIFIER+"/");
     }
-
+    
     @Inject
     UserContext userContext;
 
     private boolean isUserLogged() {
-        if(userContext.isLogged()){
-            return true;}
-        else{
-            return false;
-        }
+        return userContext.isLogged();
     }
 
 

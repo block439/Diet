@@ -1,14 +1,22 @@
 package pl.jazapp.app;
 
 
+import jdk.swing.interop.SwingInterOpUtils;
 import pl.jazapp.app.webapp.login.LoginRequest;
 
+import javax.annotation.ManagedBean;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.jms.Session;
+import javax.servlet.SessionCookieConfig;
+import javax.servlet.http.HttpSession;
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import javax.xml.registry.infomodel.User;
 import java.io.Serializable;
 @Named
+@ManagedBean
 @SessionScoped
 public class UserContext implements Serializable {
     private static final long serialVersionUID =1L;
@@ -19,16 +27,16 @@ public class UserContext implements Serializable {
     public UserContext(){
     }
 
-    public UserContext(boolean isLogged) {
-        this.isLogged = isLogged;
-    }
-
     public boolean isLogged(){
         return isLogged;
     }
 
+    public void logout(){
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+    }
+
     public void login(){
-        isLogged =true;
+        isLogged = true;
     }
 
     public void setFullName(String firstName, String lastName) {

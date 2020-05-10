@@ -30,8 +30,10 @@
         <h:inputSecret id="password" styleClass="form-control" a:placeholder="Password"
                        value="#{loginRequest.password}"/>
     </div>
+        <div class="form-group" >
     <h:commandButton  styleClass="btn btn-primary" value="Login" action="#{loginController.login(loginRequest)}"/><br/>
     <h:outputLink styleClass="small" value="register.xhtml">Signup</h:outputLink>
+        </div>
     </h:form>
 </h:body>
 </html>
