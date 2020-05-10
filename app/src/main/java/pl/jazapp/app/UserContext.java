@@ -16,11 +16,10 @@ import javax.swing.plaf.synth.SynthOptionPaneUI;
 import javax.xml.registry.infomodel.User;
 import java.io.Serializable;
 @Named
-@ManagedBean
 @SessionScoped
 public class UserContext implements Serializable {
     private static final long serialVersionUID =1L;
-    private String fullName;
+    private static String fullName;
 
     private boolean isLogged;
 
