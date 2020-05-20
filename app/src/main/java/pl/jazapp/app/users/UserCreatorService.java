@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContexts;
 import javax.transaction.Transactional;
+import java.sql.Date;
 
 @ApplicationScoped
 public class UserCreatorService {
@@ -19,9 +20,22 @@ public class UserCreatorService {
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Transactional
-    public void createUser(String username, String password){
+    public void createUser(String username, String password, String first_name,  String last_name, String email, Date birthdate){
         var userEntity = new UserEntity();
         userEntity.setUsername(username);
+        System.out.println(String.format("Tried to register with password: %s", passwordEncoder.encode(password)));
+
+        userEntity.setPassword(passwordEncoder.encode(password));
+        userEntity.setFirst_name(first_name);
+        userEntity.setLast_name(last_name);
+        userEntity.setBirthdate(birthdate);
+        userEntity.setEmail(email);
+
+//      var isPasswordCorrect = passwordEncoder.matches(password, userEntity.getPassword());
+
         em.persist(userEntity);
     }
+
+
+
 }

@@ -2,6 +2,9 @@ package pl.jazapp.app.webapp.register;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @RequestScoped
 @Named
@@ -11,7 +14,18 @@ public class RegisterRequest {
     private String firstName;
     private String lastName;
     private String mail;
-    private String birthdate;
+    private java.sql.Date birthdate;
+    private String date;
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) throws ParseException {
+        this.date = date;
+        setBirthdate(date);
+    }
+
     private String checkPassword;
 
     public String getCheckPassword() {
@@ -62,11 +76,18 @@ public class RegisterRequest {
         this.mail = mail;
     }
 
-    public String getBirthdate() {
+    public java.sql.Date getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
+    public void setBirthdate(String date) throws ParseException {
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            Date date1 = dateFormat.parse(date);
+            java.sql.Date sqlDate = new java.sql.Date(date1.getTime());
+            this.birthdate = sqlDate;
+        }catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 }

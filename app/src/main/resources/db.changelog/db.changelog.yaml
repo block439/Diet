@@ -14,3 +14,20 @@ databaseChangeLog:
         relativeToChangelogFile: true
         splitStatements: false
         path: hibernate_config.sql
+
+  - changeSet:
+      id: user_update
+      author: Aleksander Reiter
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: user_update.sql
+
+  - changeSet:
+      id: password
+      author: Aleksander Reiter
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: password.sql
+

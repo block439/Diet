@@ -20,7 +20,7 @@ public class RegisterController {
     public String register(RegisterRequest registerRequest){
         System.out.println(String.format("Tried to register with username: %s and password: %s", registerRequest.getUsername(), registerRequest.getPassword()));
 
-        userCreator.createUser("jazapp", "jazapp");
+        userCreator.createUser(registerRequest.getUsername(), registerRequest.getPassword(), registerRequest.getFirstName(), registerRequest.getLastName(), registerRequest.getMail(), registerRequest.getBirthdate());
 
 
 
@@ -28,5 +28,9 @@ public class RegisterController {
 
         return "/login.xhtml?faces-redirect=true";
     }
+
+
+
+
 
 }
