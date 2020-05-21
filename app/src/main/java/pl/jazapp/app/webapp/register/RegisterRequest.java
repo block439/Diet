@@ -16,16 +16,6 @@ public class RegisterRequest {
     private String mail;
     private java.sql.Date birthdate;
     private String date;
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) throws ParseException {
-        this.date = date;
-        setBirthdate(date);
-    }
-
     private String checkPassword;
 
     public String getCheckPassword() {
@@ -74,6 +64,15 @@ public class RegisterRequest {
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) throws ParseException {
+        this.date = date;
+        setBirthdate(date);
     }
 
     public java.sql.Date getBirthdate() {

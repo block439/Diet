@@ -13,9 +13,14 @@ public class UserSearchService {
 
     @Transactional
     public Optional<UserEntity> findUser(String username){
+        System.out.println(em.createQuery("from UserEntity where username = :username", UserEntity.class)
+                .setParameter("username", username)
+                .getResultList().stream()
+                .findFirst().toString());
         return em.createQuery("from UserEntity where username = :username", UserEntity.class)
                 .setParameter("username", username)
                 .getResultList().stream()
                 .findFirst();
+
     }
 }

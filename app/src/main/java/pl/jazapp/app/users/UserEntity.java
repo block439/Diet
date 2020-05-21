@@ -1,8 +1,10 @@
 package pl.jazapp.app.users;
 
+import jdk.jfr.Name;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.persistence.*;
 import java.sql.Date;
 import java.text.DateFormat;
@@ -39,10 +41,6 @@ public class UserEntity {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Date getBirthdate() {
-        return birthdate;
     }
 
     public void setBirthdate(Date birthdate) {
