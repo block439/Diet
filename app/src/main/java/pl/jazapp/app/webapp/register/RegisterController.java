@@ -1,7 +1,5 @@
 package pl.jazapp.app.webapp.register;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import pl.jazapp.app.UserMap;
 import pl.jazapp.app.users.UserCreatorService;
 import pl.jazapp.app.users.UserSearchService;
 

@@ -30,9 +30,6 @@ public class UserCreatorService {
         userEntity.setLast_name(last_name);
         userEntity.setBirthdate(birthdate);
         userEntity.setEmail(email);
-
-//      var isPasswordCorrect = passwordEncoder.matches(password, userEntity.getPassword());
-
         em.persist(userEntity);
     }
 

@@ -11,7 +11,7 @@ import javax.faces.validator.ValidatorException;
 public class LoginValidator implements Validator <String> {
     @Override
     public void validate(FacesContext context, UIComponent component, String value) throws ValidatorException {
-        if (!value.matches("[\\p{Ll}]{3,25}")){
+        if (!value.matches("[\\p{Ll}0-9]{3,25}")){
             throw new ValidatorException(new FacesMessage("Username or password is too long."));}
     }
 }
