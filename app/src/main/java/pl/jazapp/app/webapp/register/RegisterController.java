@@ -29,7 +29,7 @@ public class RegisterController {
         }
         else if (!registerRequest.getPassword().equals(registerRequest.getCheckPassword())){
             FacesContext.getCurrentInstance().getExternalContext().getFlash().put("password_error", "Passwords did not match!");
-            return "/register.xhtml?faces-redirect=true";
+            return "/register.xhtml?faces-redirect=false";
         }else{
             userCreator.createUser(registerRequest.getUsername(), registerRequest.getPassword(), registerRequest.getFirstName(), registerRequest.getLastName(), registerRequest.getMail(), registerRequest.getBirthdate());
             return "/login.xhtml?faces-redirect=true";

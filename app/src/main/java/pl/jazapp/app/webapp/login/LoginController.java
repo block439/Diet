@@ -1,6 +1,5 @@
 package pl.jazapp.app.webapp.login;
 
-import com.sun.istack.NotNull;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import pl.jazapp.app.UserContext;
@@ -21,7 +20,6 @@ public class LoginController  {
 
     @Inject
     UserContext userContext;
-//TODO: zmienić funkcje logowania
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     public boolean isPasswordCorrect(String password, String username) {
         return passwordEncoder.matches(password, searchService.findUser(username).get().getPassword());

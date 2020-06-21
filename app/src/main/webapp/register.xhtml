@@ -18,7 +18,7 @@
             <f:validateLength minimum="3" maximum="25"/>
                 <f:validator validatorId="usernameValidator"/>
             </h:inputText>
-            <h:messages for="username" styleClass="error-message"/>
+            <h:message for="username" styleClass="error-message"/>
             <div class="form-group">
                 <h:outputText class="alert alert-danger" rendered="#{flash.containsKey('username_taken')}" value="#{flash['username_taken']}"/>
             </div>
@@ -29,7 +29,7 @@
                            value="#{registerRequest.mail}">
                 <f:validator validatorId="emailValidator"/>
             </h:inputText>
-            <h:messages for="email" styleClass="error-message"/>
+            <h:message for="email" styleClass="error-message"/>
         </div>
 
 
@@ -62,7 +62,7 @@
                            value="#{registerRequest.password}">
                 <f:validator validatorId="passwordValidator"/>
             </h:inputSecret>
-            <h:messages for="password" styleClass="error-message"/>
+            <h:message for="password" styleClass="error-message"/>
         </div>
 
 

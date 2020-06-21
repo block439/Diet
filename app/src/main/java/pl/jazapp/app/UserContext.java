@@ -16,7 +16,7 @@ import javax.swing.plaf.synth.SynthOptionPaneUI;
 import javax.xml.registry.infomodel.User;
 import java.io.Serializable;
 @Named
-@SessionScoped
+ @SessionScoped
 public class UserContext implements Serializable {
     private static final long serialVersionUID =1L;
     private static String fullName;

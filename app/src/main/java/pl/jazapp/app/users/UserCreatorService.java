@@ -2,12 +2,10 @@ package pl.jazapp.app.users;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import pl.jazapp.app.webapp.extension.validator.PasswordValidator;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContexts;
 import javax.transaction.Transactional;
 import java.sql.Date;
 

@@ -1,20 +1,15 @@
 package pl.jazapp.app.users;
 
-import jdk.jfr.Name;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import javax.persistence.*;
 import java.sql.Date;
-import java.text.DateFormat;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column
     private long id;
 
     @Column(name = "username")
