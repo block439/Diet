@@ -19,7 +19,7 @@ import java.io.Serializable;
  @SessionScoped
 public class UserContext implements Serializable {
     private static final long serialVersionUID =1L;
-    private static String fullName;
+    private String fullName;
 
     private boolean isLogged;
 
