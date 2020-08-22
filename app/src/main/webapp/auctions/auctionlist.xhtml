@@ -4,13 +4,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+
 >
 <h:head>
     <h:outputStylesheet name="main.css" library="css"/>
     <h:outputStylesheet name="boostrap.min.css" library="css"/>
 </h:head>
 <h:body>
-    <h2>Hi <h:outputText  value="#{userContext.fullName}"/>1!</h2>
+    <div class="w-25">
+        <h:link styleClass="btn-primary" value="Add" outcome="editAuction"/>
+        <div class="list-group">
+            <ui:repeat value="#{editAuctionController.listOfAllCategories()}" var="it">
+                <h:link styleClass="list-group-item list-group-item-action" outome="editAuction">
+                    <f:param name="auctionId" value="#{it.id}"/>
+                    <h:outputText value="##{it.id} #{it.name}"/>
+                </h:link>
+            </ui:repeat>
+        </div>
+    </div>
+
 
 
     <h:form StyleClass="form-base">

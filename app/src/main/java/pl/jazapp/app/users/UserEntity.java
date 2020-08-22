@@ -30,6 +30,10 @@ public class UserEntity {
     @Column(name = "email")
     private String email;
 
+    //TODO: powiązać tabele ze sobą
+
+
+
     public String getPassword() {
         return password;
     }
@@ -66,9 +70,9 @@ public class UserEntity {
         this.email = email;
     }
 
-    public Long getId(){return id; }
+    public java.lang.Long getId(){return id; }
 
-    public void setId(Long id){this.id = id;}
+    public void setId(java.lang.Long id){this.id = id;}
 
     public String getUsername(){ return username; }
 
