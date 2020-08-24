@@ -20,6 +20,9 @@ import java.io.Serializable;
 public class UserContext implements Serializable {
     private static final long serialVersionUID =1L;
     private String fullName;
+    private String username;
+
+
 
     private boolean isLogged;
 
@@ -42,6 +45,13 @@ public class UserContext implements Serializable {
         this.fullName = firstName + " " + lastName;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getFullName() {
         return fullName;

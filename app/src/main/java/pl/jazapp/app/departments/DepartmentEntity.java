@@ -7,12 +7,13 @@ import java.util.List;
 
 @Entity
 @Table(name="department")
+@NamedQuery(name="Department.findAll", query="SELECT d FROM DepartmentEntity d")
 public class DepartmentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
-    private long departmentId;
+    private Long id;
 
     @Column(name="name")
     private String departmentName;
@@ -28,12 +29,12 @@ public class DepartmentEntity {
         this.categories = categories;
     }
 
-    public long getDepartmentId() {
-        return departmentId;
+    public Long getId() {
+        return id;
     }
 
-    public void setDepartmentId(long departmentId) {
-        this.departmentId = departmentId;
+    public void setId(Long departmentId) {
+        this.id = departmentId;
     }
 
     public String getDepartmentName() {

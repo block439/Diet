@@ -1,7 +1,6 @@
 package pl.jazapp.app.webapp.auction.edit;
 
 import pl.jazapp.app.auctions.AuctionEntity;
-import pl.jazapp.app.users.UserSearchService;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;

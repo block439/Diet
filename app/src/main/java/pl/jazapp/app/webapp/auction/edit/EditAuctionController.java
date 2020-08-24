@@ -39,6 +39,7 @@ public class EditAuctionController {
         auctionEditService.saveAuction(editAuctionRequest.toAuctionEntity());
         return "/auctions/auctionlist.xhtml?faces-redirect=true";
     }
+//TODO: tutaj zaimplementowac liste
 
     public List<String> getListOfAllCategories() {return List.of("1","2","3");}
 

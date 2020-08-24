@@ -3,7 +3,6 @@ package pl.jazapp.app.auctions;
 import pl.jazapp.app.auctions.parameters.ParameterEntity;
 
 import javax.persistence.*;
-import java.text.ParseException;
 
 @Entity
 @Table(name="auction_parameter")

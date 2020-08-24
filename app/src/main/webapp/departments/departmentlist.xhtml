@@ -13,25 +13,23 @@
 </h:head>
 <h:body>
     <div class="w-25">
-        <h:link styleClass="btn-primary" value="Add" outcome="editauction"/>
+        <h:link styleClass="btn-primary" value="Add" outcome="edit"/>
         <div class="list-group">
-            <ui:repeat value="#{editAuctionController.listOfAllCategories()}" var="it">
-                <h:link styleClass="list-group-item list-group-item-action" outcome="editauction">
-                    <f:param name="auctionId" value="#{it.id}"/>
-                    <h:outputText value="##{it.id} #{it.name}"/>
+            <ui:repeat value="#{editDepartmentController.listOfAllDepartments}" var="it">
+                <h:link styleClass="list-group-item list-group-item-action" outcome="edit">
+                    <f:param name="departmentId" value="#{it.id}"/>
+                    <h:outputText value="#{it.departmentName}"/>
                 </h:link>
             </ui:repeat>
         </div>
     </div>
 
-    <h2>Jesteś w departmentach</h2>
-    <h:graphicImage
-            value = "http://www.tutorialspoint.com/images/jsf-mini-logo.png"/>
+
 
     <h:form StyleClass="form-base">
-    <div class="form-group">
-        <h:commandButton styleClass="btn btn-primary" value="Logout" action="#{logoutController.logout()}"/><br/>
-    </div>
+        <div class="form-group">
+            <h:commandButton styleClass="btn btn-primary" value="Logout" action="#{logoutController.logout()}"/><br/>
+        </div>
     </h:form>
 
 </h:body>

@@ -30,6 +30,7 @@ public class LoginController  {
             if (searchService.findUser(loginRequest.getUsername()).get().getUsername().equals(loginRequest.getUsername()) &&
                     isPasswordCorrect(loginRequest.getPassword(), loginRequest.getUsername())) {
                 userContext.login();
+                userContext.setUsername(loginRequest.getUsername());
                 userContext.setFullName(searchService.findUser(loginRequest.getUsername()).get().getFirst_name(), searchService.findUser(loginRequest.getUsername()).get().getLast_name());
                 return "/index.xhtml?faces-redirect=true";
             } else {

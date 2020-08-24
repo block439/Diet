@@ -4,6 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+
 >
 <h:head>
     <h:outputStylesheet name="main.css" library="css"/>
@@ -12,11 +15,21 @@
 <h:body>
     <h2>Jesteś w departmentach</h2>
 
-
     <h:form StyleClass="form-base">
-    <div class="form-group">
-        <h:commandButton styleClass="btn btn-primary" value="Logout" action="#{logoutController.logout()}"/><br/>
-    </div>
+        <h:inputHidden id="id" value="#{editDepartmentController.departmentRequest().id}"/>
+        <div  class="form-group">
+            <h:inputText id="name" styleClass="form-control" a:placeholder="Name"
+                         value="#{editDepartmentController.departmentRequest().name}">
+            </h:inputText>
+        </div>
+
+
+
+
+        <div class="form-group">
+            <h:commandButton styleClass="btn btn-primary" value="save" action="#{editDepartmentController.save()}"/><br/>
+        </div>
+
     </h:form>
 
 </h:body>

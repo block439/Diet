@@ -6,12 +6,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="category")
+@NamedQuery(name="Category.findAll", query="SELECT d FROM CategoriesEntity d")
 public class CategoriesEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
-    private long id;
+    private Long id;
 
     @Column(name="name")
     private String name;
@@ -20,11 +21,11 @@ public class CategoriesEntity {
     @JoinColumn(name="department_id")
     private DepartmentEntity department;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
