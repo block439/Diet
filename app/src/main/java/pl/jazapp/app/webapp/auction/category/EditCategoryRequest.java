@@ -13,12 +13,12 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class EditCategoryRequest {
+    @Inject
+    DepartmentSearchService findDepartment;
+
     private Long id;
     private String name;
     private Long department;
-
-    @Inject
-    DepartmentEditService findDepartment;
 
     public EditCategoryRequest(){}
 
@@ -32,7 +32,7 @@ public class EditCategoryRequest {
         var categoryEntity = new CategoriesEntity();
         categoryEntity.setId(id);
         categoryEntity.setName(name);
-        categoryEntity.setDepartment(findDepartment.getDepartmentById(department));
+        categoryEntity.setDepartment(findDepartment.findDepartment(department).get());
         return categoryEntity;
     }
 
@@ -59,4 +59,6 @@ public class EditCategoryRequest {
     public void setDepartment(Long department) {
         this.department = department;
     }
+
+
 }

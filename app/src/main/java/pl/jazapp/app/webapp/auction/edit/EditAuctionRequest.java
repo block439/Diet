@@ -1,32 +1,52 @@
 package pl.jazapp.app.webapp.auction.edit;
 
+import pl.jazapp.app.UserContext;
 import pl.jazapp.app.auctions.AuctionEntity;
+import pl.jazapp.app.categories.CategorySearchService;
+import pl.jazapp.app.users.UserSearchService;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import java.math.BigDecimal;
 
 @Named
 @RequestScoped
 public class EditAuctionRequest {
+
+    @Inject
+    UserSearchService userSearchService;
+
+    @Inject
+    CategorySearchService categorySearchService;
+
+    @Inject
+    UserContext userContext;
+
     private Long id;
     private String title;
     private String description;
     private BigDecimal price;
+    private Long version;
+    private Long owner_id;
+    private Long category_id;
     private String photo1;
     private String photo2;
     private String photo3;
-    private String parameter1;
-    private String parameter2;
-    private String parameter3;
 
 
-//TODO: tutaj ten konsturktor ogarnąć.
+
     public EditAuctionRequest(AuctionEntity auctionEntity){
         this.id = auctionEntity.getId();
         this.title = auctionEntity.getTitle();
         this.description = auctionEntity.getDescription();
         this.price = auctionEntity.getPrice();
+        this.version=auctionEntity.getVersion();
+        this.owner_id=auctionEntity.getOwner().getId();
+        this.category_id=auctionEntity.getCategory().getId();
+        this.photo1=auctionEntity.getPhotoList().get(0).toString();
+        this.photo2=auctionEntity.getPhotoList().get(1).toString();
+        this.photo3=auctionEntity.getPhotoList().get(2).toString();
     }
 
 
@@ -37,6 +57,9 @@ public class EditAuctionRequest {
         auctionEntity.setTitle(title);
         auctionEntity.setDescription(description);
         auctionEntity.setPrice(price);
+        auctionEntity.setVersion(1L);
+        auctionEntity.setOwner(userSearchService.findUser(userContext.getUsername()).get());
+        auctionEntity.setCategory(categorySearchService.findCategoryById(category_id).get());
         return auctionEntity;
     }
 
@@ -97,27 +120,30 @@ public class EditAuctionRequest {
         this.photo3 = photo3;
     }
 
-    public String getParameter1() {
-        return parameter1;
+
+    public Long getOwner_id() {
+        return owner_id;
     }
 
-    public void setParameter1(String parameter1) {
-        this.parameter1 = parameter1;
+    public void setOwner_id(Long owner_id) {
+        this.owner_id = owner_id;
     }
 
-    public String getParameter2() {
-        return parameter2;
+    public Long getCategory_id() {
+        return category_id;
     }
 
-    public void setParameter2(String parameter2) {
-        this.parameter2 = parameter2;
+    public void setCategory_id(Long category_id) {
+        this.category_id = category_id;
     }
 
-    public String getParameter3() {
-        return parameter3;
+    public Long getVersion() {
+        return version;
     }
 
-    public void setParameter3(String parameter3) {
-        this.parameter3 = parameter3;
+    public void setVersion(Long version) {
+        this.version = version;
     }
+
+
 }

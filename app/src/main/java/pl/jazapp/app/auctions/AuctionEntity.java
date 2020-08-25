@@ -10,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "auction")
+@NamedQuery(name="Auction.findAll", query="SELECT d FROM AuctionEntity d")
 public class AuctionEntity {
 
     @Id
@@ -37,7 +38,7 @@ public class AuctionEntity {
     @JoinColumn(name ="category_id")
     private CategoriesEntity category;
 
-    @OneToMany(mappedBy = "auction")
+    @OneToMany(mappedBy = "auction",fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
     @OrderColumn(name="order")
     private List<PhotoEntity> photoList;
 

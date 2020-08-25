@@ -20,4 +20,13 @@ public class DepartmentSearchService {
 
     }
 
+    @Transactional
+    public Optional<DepartmentEntity> findDepartment(Long id){
+        return em.createQuery("from DepartmentEntity where id = :id", DepartmentEntity.class)
+                .setParameter("id", id)
+                .getResultList().stream()
+                .findFirst();
+
+    }
+
 }

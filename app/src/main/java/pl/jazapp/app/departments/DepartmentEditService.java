@@ -21,6 +21,7 @@ public class DepartmentEditService {
             }
         }
 
+        @Transactional
         public DepartmentEntity getDepartmentById(Long departmentId){
             return em.find(DepartmentEntity.class, departmentId);
         }

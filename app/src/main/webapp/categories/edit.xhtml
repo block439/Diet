@@ -23,7 +23,7 @@
             </h:inputText>
         </div>
         <div class="form-group">
-            <h:selectOneMenu id="department" value="#{editCategoryController.categoryRequest().department}">
+            <h:selectOneMenu id="department" value="#{editCategoryController.categoryRequest().department}" outcome="list">
                 <f:selectItems value="#{editCategoryController.listOfAllDepartments}"
                                var ="it"
                                itemLabel="#{it.departmentName}"

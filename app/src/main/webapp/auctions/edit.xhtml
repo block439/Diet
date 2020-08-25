@@ -53,32 +53,20 @@
         </h:inputText>
     </div>
 
-        <div  class="form-group">
-            <h:inputText id="param1-value" styleClass="form-control" a:placeholder="Parameter"
-                         value="#{editAuctionController.auctionRequest().parameter1}">
-            </h:inputText>
-        </div>
 
-        <div  class="form-group">
-            <h:inputText id="param2-value" styleClass="form-control" a:placeholder="Parameter"
-                         value="#{editAuctionController.auctionRequest().parameter2}">
-            </h:inputText>
-        </div>
 
-        <div  class="form-group">
-            <h:inputText id="param3-value" styleClass="form-control" a:placeholder="Parameter"
-                         value="#{editAuctionController.auctionRequest().parameter3}">
-            </h:inputText>
-        </div>
 
         <div class="form-group">
-            <h:selectOneMenu id="category" value="#{editAuctionController.auctionRequest().photo1}">
-                <f:selectItems value="#{editAuctionController.getListOfAllCategories()}"
+            <h:selectOneMenu id="category" value="#{editAuctionController.auctionRequest().category_id}">
+                <f:selectItems value="#{editAuctionController.listOfAllCategories}"
                                var ="it"
-                               itemLabel="#{it}"
-                               itemValue="#{it}"/>
+                               itemLabel="#{it.name}"
+                               itemValue="#{it.id}"/>
             </h:selectOneMenu>
         </div>
+
+
+
 
 
         <div class="form-group">

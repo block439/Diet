@@ -1,8 +1,12 @@
 package pl.jazapp.app.users;
 
 
+import pl.jazapp.app.auctions.AuctionEntity;
+import pl.jazapp.app.categories.CategoriesEntity;
+
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -29,6 +33,14 @@ public class UserEntity {
 
     @Column(name = "email")
     private String email;
+
+    @Column(name = "role")
+    private String role;
+
+    @OneToMany(mappedBy = "owner")
+    private List<AuctionEntity> owner;
+
+
 
     //TODO: powiązać tabele ze sobą
 
@@ -78,4 +90,11 @@ public class UserEntity {
 
     public void setUsername(String username){this.username=username;}
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }

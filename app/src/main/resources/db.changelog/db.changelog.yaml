@@ -39,3 +39,10 @@ databaseChangeLog:
         splitStatements: false
         path: auction.sql
 
+  - changeSet:
+      id: update
+      author: Aleksander Reiter
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: update.sql

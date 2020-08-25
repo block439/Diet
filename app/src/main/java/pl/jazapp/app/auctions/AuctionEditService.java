@@ -22,4 +22,7 @@ public class AuctionEditService {
     public AuctionEntity getAuctionById(Long auctionId){
         return em.find(AuctionEntity.class, auctionId);
     }
+
+    //todo zrobic liste ze zdjeciami
+
 }
