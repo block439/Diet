@@ -7,6 +7,7 @@ import pl.jazapp.app.auctions.AuctionEditService;
 import pl.jazapp.app.auctions.AuctionEntity;
 import pl.jazapp.app.auctions.AuctionSearchService;
 import pl.jazapp.app.auctions.photos.PhotoEntity;
+import pl.jazapp.app.auctions.photos.PhotoService;
 import pl.jazapp.app.categories.CategoriesEntity;
 import pl.jazapp.app.categories.CategorySearchService;
 import pl.jazapp.app.departments.DepartmentEntity;
@@ -37,7 +38,7 @@ public class EditAuctionController {
     UserSearchService userSearchService;
 
     @Inject
-    DepartmentSearchService departmentSearchService;
+    PhotoService photoService;
 
     @Inject
     UserContext userContext;
@@ -61,27 +62,27 @@ public class EditAuctionController {
         }
         return editAuctionRequest;
     }
-  /*  //todo przemyslec te injecty dzikie
-    public LinkedList<PhotoEntity> photoEntityList(EditAuctionRequest editAuctionRequest){
-        var auctionphoto = new LinkedList<PhotoEntity>();
-        var auction = editAuctionRequest.toAuctionEntity();
-        if(editAuctionRequest.getPhoto1()!=null){
-            auctionphoto.add(new PhotoEntity());
-        }
 
-    }*/
 
+
+//todo pozbyc sie nulli z bazy
     public String save(){
-        editAuctionRequest.userSearchService= userSearchService;
+        editAuctionRequest.userSearchService=userSearchService;
         editAuctionRequest.categorySearchService=categorySearchService;
-        editAuctionRequest.userContext = userContext;
-        auctionEditService.saveAuction(editAuctionRequest.toAuctionEntity());
+        editAuctionRequest.userContext=userContext;
+        var auction = editAuctionRequest.toAuctionEntity();
+        auctionEditService.saveAuction(auction);
+        var photo1 = new PhotoEntity(null, editAuctionRequest.getPhoto1(), auction);
+        var photo2 = new PhotoEntity(null, editAuctionRequest.getPhoto2(), auction);
+        var photo3 = new PhotoEntity(null, editAuctionRequest.getPhoto3(), auction);
+        photoService.savePhoto(photo1,auction);
+        photoService.savePhoto(photo2,auction);
+        photoService.savePhoto(photo3,auction);
         return "/auctions/auctionlist.xhtml?faces-redirect=true";
     }
-//TODO: tutaj zaimplementowac liste
     public List<CategoriesEntity> getListOfAllCategories() {return categorySearchService.listOfAllCategories();}
-    public List<DepartmentEntity> getListOfAllDepartments() {return departmentSearchService.listOfAllDepartments();}
     public List<AuctionEntity> getListOfAllAuctions() {return auctionSearchService.listOfAllAuctions();}
+    public List<AuctionEntity> getListOfAllMineAuctions() {return auctionSearchService.listOfAllMineAuctions(userContext.getUsername());}
 
 
 

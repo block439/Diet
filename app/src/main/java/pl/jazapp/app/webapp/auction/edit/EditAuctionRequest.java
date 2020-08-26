@@ -2,6 +2,7 @@ package pl.jazapp.app.webapp.auction.edit;
 
 import pl.jazapp.app.UserContext;
 import pl.jazapp.app.auctions.AuctionEntity;
+import pl.jazapp.app.auctions.photos.PhotoEntity;
 import pl.jazapp.app.categories.CategorySearchService;
 import pl.jazapp.app.users.UserSearchService;
 
@@ -9,6 +10,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.math.BigDecimal;
+import java.util.LinkedList;
 
 @Named
 @RequestScoped
@@ -33,6 +35,12 @@ public class EditAuctionRequest {
     private String photo1;
     private String photo2;
     private String photo3;
+    private String param1;
+    private String param2;
+    private String param3;
+    private String paramVal1;
+    private String paramVal2;
+    private String paramVal3;
 
 
 
@@ -60,6 +68,20 @@ public class EditAuctionRequest {
         auctionEntity.setVersion(1L);
         auctionEntity.setOwner(userSearchService.findUser(userContext.getUsername()).get());
         auctionEntity.setCategory(categorySearchService.findCategoryById(category_id).get());
+        var auctionPhotos = new LinkedList<PhotoEntity>();
+        if(getPhoto1()!=null){
+            var photoEntity1 = new PhotoEntity(null, getPhoto1(), auctionEntity);
+            auctionPhotos.add(photoEntity1);
+        }
+        else if (getPhoto2()!=null){
+            var photoEntity2 = new PhotoEntity(null, getPhoto2(), auctionEntity);
+            auctionPhotos.add(photoEntity2);
+        }
+        else if (getPhoto3()!=null){
+            var photoEntity3 = new PhotoEntity(null, getPhoto3(), auctionEntity);
+            auctionPhotos.add(photoEntity3);
+        }
+        auctionEntity.setPhotoList(auctionPhotos);
         return auctionEntity;
     }
 
@@ -145,5 +167,51 @@ public class EditAuctionRequest {
         this.version = version;
     }
 
+    public String getParam1() {
+        return param1;
+    }
 
+    public void setParam1(String param1) {
+        this.param1 = param1;
+    }
+
+    public String getParam2() {
+        return param2;
+    }
+
+    public void setParam2(String param2) {
+        this.param2 = param2;
+    }
+
+    public String getParam3() {
+        return param3;
+    }
+
+    public void setParam3(String param3) {
+        this.param3 = param3;
+    }
+
+    public String getParamVal1() {
+        return paramVal1;
+    }
+
+    public void setParamVal1(String paramVal1) {
+        this.paramVal1 = paramVal1;
+    }
+
+    public String getParamVal2() {
+        return paramVal2;
+    }
+
+    public void setParamVal2(String paramVal2) {
+        this.paramVal2 = paramVal2;
+    }
+
+    public String getParamVal3() {
+        return paramVal3;
+    }
+
+    public void setParamVal3(String paramVal3) {
+        this.paramVal3 = paramVal3;
+    }
 }

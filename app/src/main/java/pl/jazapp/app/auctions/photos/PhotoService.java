@@ -1,6 +1,7 @@
-package pl.jazapp.app.auctions;
+package pl.jazapp.app.auctions.photos;
 
-import pl.jazapp.app.auctions.photos.PhotoEntity;
+
+import pl.jazapp.app.auctions.AuctionEntity;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
@@ -8,16 +9,16 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 @ApplicationScoped
-public class AuctionEditService {
+public class PhotoService {
     @PersistenceContext
     private EntityManager em;
 
     @Transactional
-    public void saveAuction(AuctionEntity auctionEntity){
+    public void savePhoto(PhotoEntity photoEntity,AuctionEntity auctionEntity){
         if(auctionEntity.getId() == null){
-            em.persist(auctionEntity);
+            em.persist(photoEntity);
         }else {
-            em.merge(auctionEntity);
+            em.merge(photoEntity);
         }
     }
 

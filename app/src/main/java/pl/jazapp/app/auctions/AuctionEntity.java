@@ -6,7 +6,9 @@ import pl.jazapp.app.users.UserEntity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "auction")
@@ -39,8 +41,10 @@ public class AuctionEntity {
     private CategoriesEntity category;
 
     @OneToMany(mappedBy = "auction",fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
-    @OrderColumn(name="order")
     private List<PhotoEntity> photoList;
+
+    //@OneToMany(fetch = FetchType.EAGER, mappedBy = "auction")
+    //private Set<AuctionParameterEntity> auctionParameterEntities = new HashSet<>();
 
 
 
@@ -108,4 +112,12 @@ public class AuctionEntity {
     public void setCategory(CategoriesEntity category) {
         this.category = category;
     }
+
+   /* public Set<AuctionParameterEntity> getAuctionParameterEntities() {
+        return auctionParameterEntities;
+    }
+
+    public void setAuctionParameterEntities(Set<AuctionParameterEntity> auctionParameterEntities) {
+        this.auctionParameterEntities = auctionParameterEntities;
+    }*/
 }

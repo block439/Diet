@@ -28,7 +28,8 @@ public class Filter extends HttpFilter {
 
     private boolean isSiteAllowed(HttpServletRequest req) {
         return "/login.xhtml".equals(req.getServletPath())
-                || "/register.xhtml".equals(req.getServletPath());
+                || "/register.xhtml".equals(req.getServletPath())
+                || ("/index.xhtml").equals(req.getServletPath());
     }
 
     private boolean isResource(HttpServletRequest req){

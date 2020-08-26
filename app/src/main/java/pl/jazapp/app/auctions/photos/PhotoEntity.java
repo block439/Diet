@@ -12,7 +12,7 @@ public class PhotoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
-    private long photoId;
+    private Long id;
 
     @Column(name="url")
     private String url;
@@ -21,15 +21,20 @@ public class PhotoEntity {
     @JoinColumn(name="auction_id")
     private AuctionEntity auction;
 
-    @Column(name="order")
-    private Integer order;
 
-    public long getPhotoId() {
-        return photoId;
+    public PhotoEntity(){}
+
+    public PhotoEntity(Long id, String url, AuctionEntity auction){
+        this.id = id;
+        this.url=url;
+        this.auction=auction;
+    }
+    public Long getId() {
+        return id;
     }
 
-    public void setPhotoId(long photoId) {
-        this.photoId = photoId;
+    public void setId(Long photoId) {
+        this.id = photoId;
     }
 
     public String getUrl() {

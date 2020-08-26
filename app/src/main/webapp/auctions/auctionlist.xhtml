@@ -12,11 +12,19 @@
     <h:outputStylesheet name="boostrap.min.css" library="css"/>
 </h:head>
 <h:body>
+    <h:dataTable border="2" value="#{editAuctionController.listOfAllMineAuctions}" var="auction" width="350" height="350">
+        <h:column>
+            <h:outputText value="#{auction.title}"/>
+        </h:column>
+        <h:column>
+            <h:graphicImage value="#{auction.photoList[0].url}" width="200" height="200"/>
+        </h:column>
+    </h:dataTable>
     <div class="w-25">
         <h:link styleClass="btn-primary" value="Add" outcome="edit"/>
         <div class="list-group">
-            <ui:repeat value="#{editAuctionController.listOfAllAuctions}" var="it">
-                <h:link styleClass="list-group-item list-group-item-action" outcome="edit">
+            <ui:repeat value="#{editAuctionController.listOfAllMineAuctions}" var="it">
+                <h:link styleClass="" outcome="edit">
                     <f:param name="auctionId" value="#{it.id}"/>
                     <h:outputText value="##{it.id} #{it.description}"/>
                 </h:link>
