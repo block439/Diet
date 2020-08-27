@@ -34,8 +34,8 @@ public class UserEntity {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "role")
-    private String role;
+    @Column(name = "role",  columnDefinition = "varchar(15) default 'STANDARD'")
+    private String role = "STANDARD";
 
     @OneToMany(mappedBy = "owner")
     private List<AuctionEntity> owner;

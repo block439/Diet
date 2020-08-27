@@ -39,7 +39,7 @@ public class EditDepartmentController {
 
     public String save(){
         departmentEditService.saveDepartment(editDepartmentRequest.toDepartmentEntity());
-        return "/departments/edit.xhtml?faces-redirect=true";
+        return "/departments/list.xhtml?faces-redirect=true";
     }
 
     public List<DepartmentEntity> getListOfAllDepartments() {return searchService.listOfAllDepartments();}

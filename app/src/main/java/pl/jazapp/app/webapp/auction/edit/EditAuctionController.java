@@ -65,7 +65,6 @@ public class EditAuctionController {
 
 
 
-//todo pozbyc sie nulli z bazy
     public String save(){
         editAuctionRequest.userSearchService=userSearchService;
         editAuctionRequest.categorySearchService=categorySearchService;
@@ -75,9 +74,9 @@ public class EditAuctionController {
         var photo1 = new PhotoEntity(null, editAuctionRequest.getPhoto1(), auction);
         var photo2 = new PhotoEntity(null, editAuctionRequest.getPhoto2(), auction);
         var photo3 = new PhotoEntity(null, editAuctionRequest.getPhoto3(), auction);
-        photoService.savePhoto(photo1,auction);
-        photoService.savePhoto(photo2,auction);
-        photoService.savePhoto(photo3,auction);
+        photoService.savePhoto(photo1);
+        photoService.savePhoto(photo2);
+        photoService.savePhoto(photo3);
         return "/auctions/auctionlist.xhtml?faces-redirect=true";
     }
     public List<CategoriesEntity> getListOfAllCategories() {return categorySearchService.listOfAllCategories();}

@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.math.BigDecimal;
 import java.util.LinkedList;
+import java.util.List;
 
 @Named
 @RequestScoped
@@ -44,7 +45,9 @@ public class EditAuctionRequest {
 
 
 
+
     public EditAuctionRequest(AuctionEntity auctionEntity){
+        var photoList = auctionEntity.getPhotoList().listIterator();
         this.id = auctionEntity.getId();
         this.title = auctionEntity.getTitle();
         this.description = auctionEntity.getDescription();
@@ -52,9 +55,9 @@ public class EditAuctionRequest {
         this.version=auctionEntity.getVersion();
         this.owner_id=auctionEntity.getOwner().getId();
         this.category_id=auctionEntity.getCategory().getId();
-        this.photo1=auctionEntity.getPhotoList().get(0).toString();
-        this.photo2=auctionEntity.getPhotoList().get(1).toString();
-        this.photo3=auctionEntity.getPhotoList().get(2).toString();
+        this.photo1=photoList.next().getUrl();
+        this.photo2=photoList.next().getUrl();
+        this.photo3=photoList.next().getUrl();
     }
 
 

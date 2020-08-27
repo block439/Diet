@@ -25,6 +25,4 @@ public class AuctionEditService {
         return em.find(AuctionEntity.class, auctionId);
     }
 
-    //todo zrobic liste ze zdjeciami
-
 }
