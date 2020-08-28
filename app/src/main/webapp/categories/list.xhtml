@@ -14,7 +14,7 @@
 <h:body>
     <div class="w-25">
         <h:link styleClass="btn-primary" value="Add" outcome="edit"/>
-        <div class="list-group">
+        <div class="form-group">
             <ui:repeat value="#{editCategoryController.listOfAllCategories}" var="it">
                 <h:link styleClass="list-group-item list-group-item-action" outcome="edit">
                     <f:param name="categoryId" value="#{it.id}"/>

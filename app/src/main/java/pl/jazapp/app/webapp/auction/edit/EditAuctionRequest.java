@@ -42,6 +42,7 @@ public class EditAuctionRequest {
     private String paramVal1;
     private String paramVal2;
     private String paramVal3;
+    private int size;
 
 
 
@@ -58,6 +59,7 @@ public class EditAuctionRequest {
         this.photo1=photoList.next().getUrl();
         this.photo2=photoList.next().getUrl();
         this.photo3=photoList.next().getUrl();
+        this.size = auctionEntity.getPhotoList().size();
     }
 
 
@@ -168,6 +170,14 @@ public class EditAuctionRequest {
 
     public void setVersion(Long version) {
         this.version = version;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 
     public String getParam1() {

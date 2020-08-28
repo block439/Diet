@@ -77,7 +77,7 @@ public class EditAuctionController {
         photoService.savePhoto(photo1);
         photoService.savePhoto(photo2);
         photoService.savePhoto(photo3);
-        return "/auctions/auctionlist.xhtml?faces-redirect=true";
+        return "/auctions/list.xhtml?faces-redirect=true";
     }
     public List<CategoriesEntity> getListOfAllCategories() {return categorySearchService.listOfAllCategories();}
     public List<AuctionEntity> getListOfAllAuctions() {return auctionSearchService.listOfAllAuctions();}
