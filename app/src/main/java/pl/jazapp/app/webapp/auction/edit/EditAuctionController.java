@@ -15,6 +15,7 @@ import pl.jazapp.app.departments.DepartmentSearchService;
 import pl.jazapp.app.users.UserSearchService;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.LinkedList;
@@ -71,12 +72,37 @@ public class EditAuctionController {
         editAuctionRequest.userContext=userContext;
         var auction = editAuctionRequest.toAuctionEntity();
         auctionEditService.saveAuction(auction);
-        var photo1 = new PhotoEntity(null, editAuctionRequest.getPhoto1(), auction);
-        var photo2 = new PhotoEntity(null, editAuctionRequest.getPhoto2(), auction);
-        var photo3 = new PhotoEntity(null, editAuctionRequest.getPhoto3(), auction);
-        photoService.savePhoto(photo1);
-        photoService.savePhoto(photo2);
-        photoService.savePhoto(photo3);
+
+        if(photoService.getPhotoByAuction(auction).size() == 0){
+        var auctionPhotoList = new LinkedList<PhotoEntity>();
+        if(editAuctionRequest.getPhoto1()!= null){
+            auctionPhotoList.add(new PhotoEntity(null, editAuctionRequest.getPhoto1(), auction));
+        }  if(editAuctionRequest.getPhoto2()!= null){
+            auctionPhotoList.add(new PhotoEntity(null, editAuctionRequest.getPhoto2(), auction));
+        }  if(editAuctionRequest.getPhoto3()!= null){
+            auctionPhotoList.add(new PhotoEntity(null, editAuctionRequest.getPhoto3(), auction));
+        }
+            auction.setPhotoList(auctionPhotoList);
+        } else {
+            var oldPhotoList = photoService.getPhotoByAuction(auction).listIterator();
+            for(int i=0; i<photoService.getPhotoByAuction(auction).size(); i++){
+            auction.removePhoto(oldPhotoList.next());}
+
+            if(editAuctionRequest.getPhoto1()!= null){
+                auction.addPhoto(new PhotoEntity(null, editAuctionRequest.getPhoto1(), auction));
+            }  if(editAuctionRequest.getPhoto2()!= null){
+                auction.addPhoto(new PhotoEntity(null, editAuctionRequest.getPhoto2(), auction));
+            }  if(editAuctionRequest.getPhoto3()!= null){
+                auction.addPhoto(new PhotoEntity(null, editAuctionRequest.getPhoto3(), auction));
+            }
+
+
+        }
+
+
+
+        auctionEditService.saveAuction(auction);
+
         return "/auctions/list.xhtml?faces-redirect=true";
     }
     public List<CategoriesEntity> getListOfAllCategories() {return categorySearchService.listOfAllCategories();}

@@ -12,24 +12,10 @@ public class ParameterRetriever {
 
     @Inject
     HttpServletRequest req;
-    @Inject
-    UserContext userContext;
-    @Inject
-    UserSearchService userSearchService;
 
-    private boolean isAdmin(){
-        var username = userContext.getUsername();
-        var role = userSearchService.findUser(username).get().getRole();
-        if(role.equals("ADMIN"))
-        {
-            return true;
-        } else return false;
-    }
 
     public boolean contains(String name) {
-        if(isAdmin()) {
             return req.getParameter(name) != null;
-        }else return false;
     }
 
     public Long getParameterAsLong(String name){

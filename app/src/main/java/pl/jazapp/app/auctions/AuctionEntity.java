@@ -60,6 +60,14 @@ public class AuctionEntity {
         this.photoList = photoList;
     }
 
+    public void removePhoto(PhotoEntity photoEntity){
+        this.photoList.remove(photoEntity);
+    }
+
+    public void addPhoto(PhotoEntity photoEntity){
+        this.photoList.add(photoEntity);
+    }
+
 
     public void setId(java.lang.Long id) {
         this.id = id;

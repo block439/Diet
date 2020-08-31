@@ -53,7 +53,7 @@ public class EditCategoryController {
     public String save(){
         editCategoryRequest.findDepartment = departmentSearchService;
         categoryEditService.saveCategory(editCategoryRequest.toCategoryEntity());
-        return "/categories/edit.xhtml?faces-redirect=true";
+        return "/categories/list.xhtml?faces-redirect=true";
     }
 
 

@@ -1,6 +1,6 @@
 package pl.jazapp.app;
 
-import pl.jazapp.app.users.UserSearchService;
+
 
 import javax.faces.application.ResourceHandler;
 import javax.inject.Inject;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebFilter("*")
-public class Filter extends HttpFilter {
+public class LoginFilter extends HttpFilter {
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         if(isUserLogged() || isSiteAllowed(req) || isResource(req)){

@@ -1,6 +1,7 @@
 package pl.jazapp.app.webapp.auction.edit;
 
 import pl.jazapp.app.UserContext;
+import pl.jazapp.app.auctions.AuctionEditService;
 import pl.jazapp.app.auctions.AuctionEntity;
 import pl.jazapp.app.auctions.photos.PhotoEntity;
 import pl.jazapp.app.categories.CategorySearchService;
@@ -10,7 +11,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.math.BigDecimal;
-import java.util.LinkedList;
 import java.util.List;
 
 @Named
@@ -25,6 +25,9 @@ public class EditAuctionRequest {
 
     @Inject
     UserContext userContext;
+
+
+
 
     private Long id;
     private String title;
@@ -42,7 +45,6 @@ public class EditAuctionRequest {
     private String paramVal1;
     private String paramVal2;
     private String paramVal3;
-    private int size;
 
 
 
@@ -59,7 +61,6 @@ public class EditAuctionRequest {
         this.photo1=photoList.next().getUrl();
         this.photo2=photoList.next().getUrl();
         this.photo3=photoList.next().getUrl();
-        this.size = auctionEntity.getPhotoList().size();
     }
 
 
@@ -73,20 +74,6 @@ public class EditAuctionRequest {
         auctionEntity.setVersion(1L);
         auctionEntity.setOwner(userSearchService.findUser(userContext.getUsername()).get());
         auctionEntity.setCategory(categorySearchService.findCategoryById(category_id).get());
-        var auctionPhotos = new LinkedList<PhotoEntity>();
-        if(getPhoto1()!=null){
-            var photoEntity1 = new PhotoEntity(null, getPhoto1(), auctionEntity);
-            auctionPhotos.add(photoEntity1);
-        }
-        else if (getPhoto2()!=null){
-            var photoEntity2 = new PhotoEntity(null, getPhoto2(), auctionEntity);
-            auctionPhotos.add(photoEntity2);
-        }
-        else if (getPhoto3()!=null){
-            var photoEntity3 = new PhotoEntity(null, getPhoto3(), auctionEntity);
-            auctionPhotos.add(photoEntity3);
-        }
-        auctionEntity.setPhotoList(auctionPhotos);
         return auctionEntity;
     }
 
@@ -172,13 +159,6 @@ public class EditAuctionRequest {
         this.version = version;
     }
 
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
 
     public String getParam1() {
         return param1;
@@ -227,4 +207,6 @@ public class EditAuctionRequest {
     public void setParamVal3(String paramVal3) {
         this.paramVal3 = paramVal3;
     }
+
+
 }

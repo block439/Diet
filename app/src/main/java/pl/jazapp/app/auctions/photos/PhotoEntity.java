@@ -29,6 +29,9 @@ public class PhotoEntity {
         this.url=url;
         this.auction=auction;
     }
+    public PhotoEntity(String url){
+        this.url = url;
+    }
     public Long getId() {
         return id;
     }
@@ -52,4 +55,6 @@ public class PhotoEntity {
     public void setAuction(AuctionEntity auction) {
         this.auction = auction;
     }
+
+
 }
