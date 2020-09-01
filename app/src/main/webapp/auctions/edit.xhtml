@@ -16,43 +16,67 @@
 
     <h:form StyleClass="form-base">
         <h:inputHidden id="id" value="#{editAuctionController.auctionRequest().id}"/>
-    <div  class="form-group">
-        <h:inputText id="title" styleClass="form-control" a:placeholder="Title"
-                     value="#{editAuctionController.auctionRequest().title}">
-        </h:inputText>
-    </div>
+        <div  class="form-group">
+            <h:inputText id="title" styleClass="form-control" a:placeholder="Title"
+                         value="#{editAuctionController.auctionRequest().title}">
+            </h:inputText>
+        </div>
 
-    <div  class="form-group">
-        <h:inputText id="description" styleClass="form-control" a:placeholder="Description"
-                     value="#{editAuctionController.auctionRequest().description}">
-        </h:inputText>
-    </div>
+        <div  class="form-group">
+            <h:inputText id="description" styleClass="form-control" a:placeholder="Description"
+                         value="#{editAuctionController.auctionRequest().description}">
+            </h:inputText>
+        </div>
 
-    <div  class="form-group">
-        <h:inputText  id="price" styleClass="form-control" a:placeholder="Price"
-                     value="#{editAuctionController.auctionRequest().price}">
-        </h:inputText>
-        <h:message for="price" styleClass="error-message" />
-    </div>
+        <div  class="form-group">
+            <h:inputText  id="price" styleClass="form-control" a:placeholder="Price" required="true"
+                         value="#{editAuctionController.auctionRequest().price}">
+            </h:inputText>
+            <h:message for="price" styleClass="error-message" />
+        </div>
 
-    <div  class="form-group">
-        <h:inputText id="photo-link-1" styleClass="form-control" a:placeholder="Photo 1"
-                     value="#{editAuctionController.auctionRequest().photo1}">
-        </h:inputText>
-    </div>
+        <div  class="form-group">
+            <h:inputText id="photo-link-1" styleClass="form-control" a:placeholder="Photo 1"
+                         value="#{editAuctionController.auctionRequest().photo1}">
+            </h:inputText>
+        </div>
 
-    <div  class="form-group">
-        <h:inputText id="photo-link-2" styleClass="form-control" a:placeholder="Photo 2"
-                     value="#{editAuctionController.auctionRequest().photo2}">
-        </h:inputText>
-    </div>
+        <div  class="form-group">
+            <h:inputText id="photo-link-2" styleClass="form-control" a:placeholder="Photo 2"
+                         value="#{editAuctionController.auctionRequest().photo2}">
+            </h:inputText>
+        </div>
 
-    <div  class="form-group">
-        <h:inputText id="photo-link-3" styleClass="form-control" a:placeholder="Photo 3"
-                         value="#{editAuctionController.auctionRequest().photo3}">
-        </h:inputText>
-    </div>
+        <div  class="form-group">
+            <h:inputText id="photo-link-3" styleClass="form-control" a:placeholder="Photo 3"
+                             value="#{editAuctionController.auctionRequest().photo3}">
+            </h:inputText>
+        </div>
 
+        <div class="form-group">
+            <h:inputText id="param1" styleClass="form-control" a:placeholder="Parameter 1"
+                         value="#{editAuctionController.auctionRequest().param1}">
+            </h:inputText>
+            <h:inputText id="paramVal1" styleClass="form-control" a:placeholder="Parameter Value 1"
+                         value="#{editAuctionController.auctionRequest().paramVal1}">
+            </h:inputText>
+        </div>
+        <div class="form-group">
+            <h:inputText id="param2" styleClass="form-control" a:placeholder="Parameter 2"
+                         value="#{editAuctionController.auctionRequest().param2}">
+            </h:inputText>
+            <h:inputText id="paramVal2" styleClass="form-control" a:placeholder="Parameter Value 2"
+                         value="#{editAuctionController.auctionRequest().paramVal2}">
+            </h:inputText>
+        </div>
+        <div class="form-group">
+            <h:inputText id="param3" styleClass="form-control" a:placeholder="Parameter 3"
+                         value="#{editAuctionController.auctionRequest().param3}">
+            </h:inputText>
+            <h:inputText id="paramVal3" styleClass="form-control" a:placeholder="Parameter Value 3"
+                         value="#{editAuctionController.auctionRequest().paramVal3}">
+            </h:inputText>
+        </div>
 
 
 

@@ -14,6 +14,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @ApplicationScoped
 public class AuctionSearchService {
@@ -27,7 +28,7 @@ public class AuctionSearchService {
     }
 
 
-//todo napisac query
+
     @Transactional
     public List<AuctionEntity> listOfAllMineAuctions(String username){
         UserEntity owner = em.
@@ -39,6 +40,8 @@ public class AuctionSearchService {
                 .getResultList();
 
     }
+
+
 
 
 }

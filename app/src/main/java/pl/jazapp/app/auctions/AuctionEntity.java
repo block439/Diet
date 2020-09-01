@@ -40,11 +40,11 @@ public class AuctionEntity {
     @JoinColumn(name ="category_id")
     private CategoriesEntity category;
 
-    @OneToMany(mappedBy = "auction",fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
+    @OneToMany(mappedBy = "auction",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<PhotoEntity> photoList;
 
-    //@OneToMany(fetch = FetchType.EAGER, mappedBy = "auction")
-    //private Set<AuctionParameterEntity> auctionParameterEntities = new HashSet<>();
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "auction", cascade = CascadeType.ALL)
+   private Set<AuctionParameterEntity> auctionParameterEntities = new HashSet<>();
 
 
 
@@ -58,14 +58,6 @@ public class AuctionEntity {
 
     public void setPhotoList(List<PhotoEntity> photoList) {
         this.photoList = photoList;
-    }
-
-    public void removePhoto(PhotoEntity photoEntity){
-        this.photoList.remove(photoEntity);
-    }
-
-    public void addPhoto(PhotoEntity photoEntity){
-        this.photoList.add(photoEntity);
     }
 
 
@@ -121,11 +113,11 @@ public class AuctionEntity {
         this.category = category;
     }
 
-   /* public Set<AuctionParameterEntity> getAuctionParameterEntities() {
+   public Set<AuctionParameterEntity> getAuctionParameterEntities() {
         return auctionParameterEntities;
     }
 
     public void setAuctionParameterEntities(Set<AuctionParameterEntity> auctionParameterEntities) {
         this.auctionParameterEntities = auctionParameterEntities;
-    }*/
+    }
 }

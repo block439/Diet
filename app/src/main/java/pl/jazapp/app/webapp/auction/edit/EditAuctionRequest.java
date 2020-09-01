@@ -11,7 +11,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.math.BigDecimal;
-import java.util.List;
 
 @Named
 @RequestScoped
@@ -51,6 +50,7 @@ public class EditAuctionRequest {
 
     public EditAuctionRequest(AuctionEntity auctionEntity){
         var photoList = auctionEntity.getPhotoList().listIterator();
+        var parameterList = auctionEntity.getAuctionParameterEntities().iterator();
         this.id = auctionEntity.getId();
         this.title = auctionEntity.getTitle();
         this.description = auctionEntity.getDescription();
@@ -61,6 +61,15 @@ public class EditAuctionRequest {
         this.photo1=photoList.next().getUrl();
         this.photo2=photoList.next().getUrl();
         this.photo3=photoList.next().getUrl();
+        /*var param = parameterList.next();
+        this.param1=param.getParameter().getParameterName();
+        this.paramVal1=param.getValue();
+        param = parameterList.next();
+        this.param2=param.getParameter().getParameterName();
+        this.paramVal2=param.getValue();
+        param = parameterList.next();
+        this.param3=param.getParameter().getParameterName();
+        this.paramVal3=param.getValue();*/
     }
 
 
@@ -132,15 +141,6 @@ public class EditAuctionRequest {
 
     public void setPhoto3(String photo3) {
         this.photo3 = photo3;
-    }
-
-
-    public Long getOwner_id() {
-        return owner_id;
-    }
-
-    public void setOwner_id(Long owner_id) {
-        this.owner_id = owner_id;
     }
 
     public Long getCategory_id() {

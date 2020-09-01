@@ -15,14 +15,6 @@ public class PhotoService {
     @PersistenceContext
     private EntityManager em;
 
-    @Transactional
-    public void savePhoto(PhotoEntity photoEntity){
-        if(photoEntity.getId() == null){
-            em.persist(photoEntity);
-        }else {
-            em.merge(photoEntity);
-        }
-    }
 
     public List<PhotoEntity> getPhotoByAuction(AuctionEntity auction){
         return em.createQuery("from PhotoEntity where auction = :auction", PhotoEntity.class)
