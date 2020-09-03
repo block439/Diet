@@ -1,9 +1,7 @@
 package pl.jazapp.app.webapp.auction.edit;
 
 import pl.jazapp.app.UserContext;
-import pl.jazapp.app.auctions.AuctionEditService;
 import pl.jazapp.app.auctions.AuctionEntity;
-import pl.jazapp.app.auctions.photos.PhotoEntity;
 import pl.jazapp.app.categories.CategorySearchService;
 import pl.jazapp.app.users.UserSearchService;
 
@@ -61,7 +59,7 @@ public class EditAuctionRequest {
         this.photo1=photoList.next().getUrl();
         this.photo2=photoList.next().getUrl();
         this.photo3=photoList.next().getUrl();
-        /*var param = parameterList.next();
+        var param = parameterList.next();
         this.param1=param.getParameter().getParameterName();
         this.paramVal1=param.getValue();
         param = parameterList.next();
@@ -69,7 +67,7 @@ public class EditAuctionRequest {
         this.paramVal2=param.getValue();
         param = parameterList.next();
         this.param3=param.getParameter().getParameterName();
-        this.paramVal3=param.getValue();*/
+        this.paramVal3=param.getValue();
     }
 
 

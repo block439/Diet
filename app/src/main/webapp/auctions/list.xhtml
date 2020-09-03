@@ -14,10 +14,10 @@
 </h:head>
 <h:body>
 
+    <h:form>
     <div class="form-group">
 
         <h:dataTable class="form-group" border="2" value="#{editAuctionController.listOfAllMineAuctions}" var="auction" width="350" height="350">
-
 
                 <h:column>
                     <h:outputText id="title-#{auction.title}" value="#{auction.title}"/>
@@ -42,7 +42,7 @@
         </h:dataTable>
         </div>
 
-
+</h:form>
     <h:form StyleClass="form-base">
     <div class="form-group">
         <h:commandButton styleClass="btn btn-primary" value="Logout" action="#{logoutController.logout()}"/><br/>

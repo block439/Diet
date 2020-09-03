@@ -1,5 +1,6 @@
 package pl.jazapp.app.auctions;
 
+import org.hibernate.tool.hbm2ddl.SchemaExportTask;
 import pl.jazapp.app.User;
 import pl.jazapp.app.UserContext;
 import pl.jazapp.app.categories.CategoriesEntity;
@@ -40,8 +41,5 @@ public class AuctionSearchService {
                 .getResultList();
 
     }
-
-
-
 
 }

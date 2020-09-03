@@ -20,7 +20,6 @@ import javax.inject.Named;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 
 @Named
@@ -100,15 +99,17 @@ public class EditAuctionController {
                 photoList.get(2).setUrl(editAuctionRequest.getPhoto3());
             }
             auction.setPhotoList(photoList);
+            auctionEditService.saveAuction(auction);
         }
-/*
+
+
         var auctionParameterList = new HashSet<AuctionParameterEntity>();
-        if(auctionEditService.getAuctionById(editAuctionRequest.getId()).getAuctionParameterEntities() == null){
+        if (editAuctionRequest.getId() == null){
             var param = new ParameterEntity();
             var auctionParameter = new AuctionParameterEntity();
+
             if(editAuctionRequest.getParam1() != null){
             param.setParameterName(editAuctionRequest.getParam1());
-            param.setAuctionParameterEntities(Set.of(auctionParameter));
             auctionParameter.setParameter(param);
             auctionParameter.setAuction(auction);
             auctionParameter.setValue(editAuctionRequest.getParamVal1());
@@ -118,7 +119,6 @@ public class EditAuctionController {
                 param = new ParameterEntity();
                 auctionParameter = new AuctionParameterEntity();
                 param.setParameterName(editAuctionRequest.getParam2());
-                param.setAuctionParameterEntities(Set.of(auctionParameter));
                 auctionParameter.setParameter(param);
                 auctionParameter.setAuction(auction);
                 auctionParameter.setValue(editAuctionRequest.getParamVal2());
@@ -128,17 +128,46 @@ public class EditAuctionController {
                 param = new ParameterEntity();
                 auctionParameter = new AuctionParameterEntity();
                 param.setParameterName(editAuctionRequest.getParam3());
-                param.setAuctionParameterEntities(Set.of(auctionParameter));
                 auctionParameter.setParameter(param);
                 auctionParameter.setAuction(auction);
                 auctionParameter.setValue(editAuctionRequest.getParamVal3());
                 auctionParameterList.add(auctionParameter);}
             auction.setAuctionParameterEntities(auctionParameterList);
-        }*/
+        }
+        else{
+            auction = auctionEditService.getAuctionById(editAuctionRequest.getId());
+            auctionParameterList = new HashSet<AuctionParameterEntity>(auction.getAuctionParameterEntities());
+            var param = new ParameterEntity();
 
+            if(editAuctionRequest.getParam1() != null){
+                param = new ParameterEntity();
+                param.setParameterName(editAuctionRequest.getParam1());
+                var currentParam = auctionParameterList.iterator().next();
+                currentParam.setParameter(param);
+                currentParam.setAuction(auction);
+                currentParam.setValue(editAuctionRequest.getParamVal3());
 
+            }
+            if(editAuctionRequest.getParam2() != null){
+                param = new ParameterEntity();
+                param.setParameterName(editAuctionRequest.getParam2());
+                var currentParam = auctionParameterList.iterator().next();
+                currentParam.setParameter(param);
+                currentParam.setAuction(auction);
+                currentParam.setValue(editAuctionRequest.getParamVal3());
+            }
+            if(editAuctionRequest.getParam3() != null){
+                param = new ParameterEntity();
+                param.setParameterName(editAuctionRequest.getParam3());
+                var currentParam = auctionParameterList.iterator().next();
+                currentParam.setParameter(param);
+                currentParam.setAuction(auction);
+                currentParam.setValue(editAuctionRequest.getParamVal3());
+            }
+            auction.setAuctionParameterEntities(auctionParameterList);
+            auctionEditService.saveAuction(auction);
 
-
+        }
         auctionEditService.saveAuction(auction);
 
         return "/auctions/list.xhtml?faces-redirect=true";

@@ -44,7 +44,7 @@ public class AuctionEntity {
     private List<PhotoEntity> photoList;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "auction", cascade = CascadeType.ALL)
-   private Set<AuctionParameterEntity> auctionParameterEntities = new HashSet<>();
+    private Set<AuctionParameterEntity> auctionParameterEntities;
 
 
 

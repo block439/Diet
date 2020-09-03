@@ -1,10 +1,7 @@
 package pl.jazapp.app.auctions.parameters;
 
-import pl.jazapp.app.auctions.AuctionParameterEntity;
-
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+
 
 @Entity
 @Table(name="parameter")
@@ -14,9 +11,9 @@ public class ParameterEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private Long id;
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "parameter", cascade = CascadeType.ALL)
-    Set<AuctionParameterEntity> auctionParameterEntities = new HashSet<>();
+/*
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "parameter")
+    Set<AuctionParameterEntity> auctionParameterEntities = new HashSet<>();*/
 
     @Column(name="name")
     private String parameterName;
@@ -36,12 +33,12 @@ public class ParameterEntity {
     public void setParameterName(String parameterName) {
         this.parameterName = parameterName;
     }
-
+/*
     public Set<AuctionParameterEntity> getAuctionParameterEntities() {
         return auctionParameterEntities;
     }
 
     public void setAuctionParameterEntities(Set<AuctionParameterEntity> auctionParameterEntities) {
         this.auctionParameterEntities = auctionParameterEntities;
-    }
+    }*/
 }
