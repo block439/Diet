@@ -20,6 +20,7 @@ import javax.inject.Named;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 
 @Named
@@ -137,32 +138,27 @@ public class EditAuctionController {
         else{
             auction = auctionEditService.getAuctionById(editAuctionRequest.getId());
             auctionParameterList = new HashSet<AuctionParameterEntity>(auction.getAuctionParameterEntities());
-            var param = new ParameterEntity();
+            var list = auctionParameterList.iterator().next();
 
             if(editAuctionRequest.getParam1() != null){
-                param = new ParameterEntity();
-                param.setParameterName(editAuctionRequest.getParam1());
-                var currentParam = auctionParameterList.iterator().next();
-                currentParam.setParameter(param);
-                currentParam.setAuction(auction);
-                currentParam.setValue(editAuctionRequest.getParamVal3());
+                var parameter = list.getParameter();
+                parameter.setParameterName(editAuctionRequest.getParam1());
+                list.setParameter(parameter);
+                list.setValue(editAuctionRequest.getParamVal3());
 
             }
             if(editAuctionRequest.getParam2() != null){
-                param = new ParameterEntity();
-                param.setParameterName(editAuctionRequest.getParam2());
-                var currentParam = auctionParameterList.iterator().next();
-                currentParam.setParameter(param);
-                currentParam.setAuction(auction);
-                currentParam.setValue(editAuctionRequest.getParamVal3());
+                list = auctionParameterList.iterator().next();
+                var parameter = list.getParameter();
+                parameter.setParameterName(editAuctionRequest.getParam2());
+                list.setParameter(parameter);
+                list.setValue(editAuctionRequest.getParamVal3());
             }
             if(editAuctionRequest.getParam3() != null){
-                param = new ParameterEntity();
-                param.setParameterName(editAuctionRequest.getParam3());
-                var currentParam = auctionParameterList.iterator().next();
-                currentParam.setParameter(param);
-                currentParam.setAuction(auction);
-                currentParam.setValue(editAuctionRequest.getParamVal3());
+                list = auctionParameterList.iterator().next();
+                var parameter = list.getParameter();
+                list.setParameter(parameter);
+                list.setValue(editAuctionRequest.getParamVal3());
             }
             auction.setAuctionParameterEntities(auctionParameterList);
             auctionEditService.saveAuction(auction);
