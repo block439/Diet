@@ -17,10 +17,7 @@ import pl.jazapp.app.users.UserSearchService;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
 @Named
@@ -104,7 +101,7 @@ public class EditAuctionController {
         }
 
 
-        var auctionParameterList = new HashSet<AuctionParameterEntity>();
+        var auctionParameterList = new LinkedHashSet<AuctionParameterEntity>();
         if (editAuctionRequest.getId() == null){
             var param = new ParameterEntity();
             var auctionParameter = new AuctionParameterEntity();
@@ -136,27 +133,34 @@ public class EditAuctionController {
             auction.setAuctionParameterEntities(auctionParameterList);
         }
         else{
+
             auction = auctionEditService.getAuctionById(editAuctionRequest.getId());
-            auctionParameterList = new HashSet<AuctionParameterEntity>(auction.getAuctionParameterEntities());
+            auctionParameterList = new LinkedHashSet<AuctionParameterEntity>(auction.getAuctionParameterEntities());
             var list = auctionParameterList.iterator().next();
 
-            if(editAuctionRequest.getParam1() != null){
+
+           if(editAuctionRequest.getParam1() != null){
                 var parameter = list.getParameter();
+                auctionParameterList.remove(list);
                 parameter.setParameterName(editAuctionRequest.getParam1());
                 list.setParameter(parameter);
-                list.setValue(editAuctionRequest.getParamVal3());
-
-            }
-            if(editAuctionRequest.getParam2() != null){
+                list.setValue(editAuctionRequest.getParamVal1());
+                auctionParameterList.add(list);
+           }
+           if(editAuctionRequest.getParam2() != null){
                 list = auctionParameterList.iterator().next();
                 var parameter = list.getParameter();
+                auctionParameterList.remove(list);
                 parameter.setParameterName(editAuctionRequest.getParam2());
                 list.setParameter(parameter);
-                list.setValue(editAuctionRequest.getParamVal3());
-            }
-            if(editAuctionRequest.getParam3() != null){
+                list.setValue(editAuctionRequest.getParamVal2());
+                auctionParameterList.add(list);
+
+           }
+           if(editAuctionRequest.getParam3() != null){
                 list = auctionParameterList.iterator().next();
                 var parameter = list.getParameter();
+                parameter.setParameterName(editAuctionRequest.getParam3());
                 list.setParameter(parameter);
                 list.setValue(editAuctionRequest.getParamVal3());
             }

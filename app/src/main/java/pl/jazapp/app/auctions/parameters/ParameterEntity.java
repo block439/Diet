@@ -11,7 +11,6 @@ public class ParameterEntity {
     @Column
     private Long id;
 
-
     @Column(name="name")
     private String parameterName;
 
