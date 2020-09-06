@@ -170,7 +170,7 @@ public class EditAuctionController {
         }
         auctionEditService.saveAuction(auction);
 
-        return "/auctions/list.xhtml?faces-redirect=true";
+        return "/auctions/mine.xhtml?faces-redirect=true";
     }
     public List<CategoriesEntity> getListOfAllCategories() {return categorySearchService.listOfAllCategories();}
     public List<AuctionEntity> getListOfAllAuctions() {return auctionSearchService.listOfAllAuctions();}

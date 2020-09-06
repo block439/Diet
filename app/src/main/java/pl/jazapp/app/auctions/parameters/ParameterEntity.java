@@ -1,7 +1,12 @@
 package pl.jazapp.app.auctions.parameters;
 
 
+import pl.jazapp.app.auctions.AuctionEntity;
+import pl.jazapp.app.auctions.AuctionParameterId;
+
 import javax.persistence.*;
+import java.util.Objects;
+
 @Entity
 @Table(name="parameter")
 public class ParameterEntity {
@@ -29,6 +34,6 @@ public class ParameterEntity {
     public void setParameterName(String parameterName) {
         this.parameterName = parameterName;
     }
-
+    
 
 }
