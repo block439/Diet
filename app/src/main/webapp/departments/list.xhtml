@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+
+>
+<h:head>
+    <h:outputStylesheet name="main.css" library="css"/>
+    <h:outputStylesheet name="boostrap.min.css" library="css"/>
+</h:head>
+<h:body>
+    <div class="form-group">
+        <h:link styleClass="btn-primary" value="Add" outcome="edit"/>
+        <div class="list-group">
+            <ui:repeat id="department-#{editDepartmentRequest.id}" value="#{editDepartmentController.listOfAllDepartments}" var="it">
+                <h:link styleClass="list-group-item list-group-item-action" outcome="edit">
+                    <f:param name="departmentId" value="#{it.id}"/>
+                    <h:outputText value="#{it.departmentName}"/>
+                </h:link>
+            </ui:repeat>
+        </div>
+    </div>
+
+
+
+
+
+</h:body>
+</html>

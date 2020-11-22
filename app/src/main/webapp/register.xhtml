@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+<h:head>
+    <h:outputStylesheet name="main.css" library="css"/>
+    <h:outputStylesheet name="boostrap.min.css" library="css"/>
+</h:head>
+<h:body>
+    <h:form StyleClass="form-base">
+        <div class="form-group">
+            <h:inputText id="username" styleClass="form-control" a:placeholder="Username"
+                         value="#{registerRequest.username}">
+            <f:validateLength minimum="3" maximum="25"/>
+                <f:validator validatorId="usernameValidator"/>
+            </h:inputText>
+            <h:message for="username" styleClass="error-message"/>
+            <div class="form-group">
+                <h:outputText class="alert alert-danger" rendered="#{flash.containsKey('username_taken')}" value="#{flash['username_taken']}"/>
+            </div>
+        </div>
+
+        <div  class="form-group">
+            <h:inputText id="email" styleClass="form-control" a:placeholder="Mail"
+                           value="#{registerRequest.mail}">
+                <f:validator validatorId="emailValidator"/>
+            </h:inputText>
+            <h:message for="email" styleClass="error-message"/>
+        </div>
+
+
+        <div  class="form-group">
+            <h:inputText id="first-name" styleClass="form-control" a:placeholder="First Name"
+                           value="#{registerRequest.firstName}">
+            <f:validator validatorId="firstNameValidator"/>
+            </h:inputText>
+            <h:message for="first-name" styleClass="error-message"/>
+        </div>
+
+        <div  class="form-group">
+            <h:inputText id="last-name" styleClass="form-control" a:placeholder="Last Name"
+                           value="#{registerRequest.lastName}">
+                <f:validator validatorId="lastNameValidator"/>
+            </h:inputText>
+            <h:message for="last-name" styleClass="error-message"/>
+        </div>
+
+        <div  class="form-group">
+            <h:inputText id="birthdate" styleClass="form-control" a:placeholder="Birthdate"
+                           value="#{registerRequest.date}">
+                <f:validator validatorId="birthdateValidator"/>
+            </h:inputText>
+            <h:message for="birthdate" styleClass="error-message"/>
+        </div>
+
+        <div  class="form-group">
+            <h:inputSecret id="password" styleClass="form-control" a:placeholder="Password"
+                           value="#{registerRequest.password}">
+                <f:validator validatorId="passwordValidator"/>
+            </h:inputSecret>
+            <h:message for="password" styleClass="error-message"/>
+        </div>
+
+
+        <div  class="form-group">
+            <h:inputSecret id="check-password" styleClass="form-control" a:placeholder="Check Password"
+                           value="#{registerRequest.checkPassword}"/>
+        </div>
+        <div class="form-group">
+            <h:outputText class="alert alert-danger" rendered="#{flash.containsKey('password_error')}" value="#{flash['password_error']}"/>
+        </div>
+
+
+
+
+
+        <div class="form-group">
+        <h:commandButton styleClass="btn btn-primary" value="Signup" action="#{registerController.register(registerRequest)}"/><br/>
+          </div>
+    </h:form>
+</h:body>
+</html>

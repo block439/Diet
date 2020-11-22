@@ -1,0 +1,10 @@
+ALTER TABLE users
+ADD COLUMN password VARCHAR(50);
+ALTER  TABLE users
+ADD COLUMN birthdate DATE;
+ALTER  TABLE users
+ADD COLUMN email VARCHAR(50);
+ALTER  TABLE users
+ADD COLUMN first_name VARCHAR(30);
+ALTER  TABLE users
+ADD COLUMN last_name VARCHAR(30);

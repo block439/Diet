@@ -1,0 +1,56 @@
+databaseChangeLog:
+  - changeSet:
+      id: init
+      author: Aleksander Reiter
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: init.sql
+
+  - changeSet:
+      id: hibernate_config
+      author: Aleksander Reiter
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: hibernate_config.sql
+
+  - changeSet:
+      id: user_update
+      author: Aleksander Reiter
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: user_update.sql
+
+  - changeSet:
+      id: password
+      author: Aleksander Reiter
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: password.sql
+
+  - changeSet:
+      id: auction
+      author: Aleksander Reiter
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: auction.sql
+
+  - changeSet:
+      id: update
+      author: Aleksander Reiter
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: update.sql
+
+  - changeSet:
+      id: update2
+      author: Aleksander Reiter
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: update2.sql
