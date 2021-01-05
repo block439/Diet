@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebFilter(urlPatterns = {"/departments/edit.xhtml", "/categories/edit.xhtml"})
-public class AdminFilter extends HttpFilter {
+public class
+AdminFilter extends HttpFilter {
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         if(isAdmin() ){
