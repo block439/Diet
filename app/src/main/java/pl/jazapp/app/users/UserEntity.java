@@ -41,11 +41,6 @@ public class UserEntity {
     private List<AuctionEntity> owner;
 
 
-
-    //TODO: powiązać tabele ze sobą
-
-
-
     public String getPassword() {
         return password;
     }
