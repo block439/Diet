@@ -1,7 +1,11 @@
-package pl.jazapp.app.meals;
+package pl.jazapp.app.diet.meals;
+
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name="meal")
@@ -21,7 +25,15 @@ public class MealEntity {
     @OneToOne(mappedBy = "meal")
     private PhotoEntity photoEntity;
 
+    @OneToMany(mappedBy = "meal", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MealDietEntity> diets = new ArrayList<>();
 
+
+
+    public MealEntity(String name, String recipe){
+        this.name = name;
+        this.recipe = recipe;
+    }
 
     public Long getId() {
         return id;
@@ -53,5 +65,26 @@ public class MealEntity {
 
     public void setPhotoEntity(PhotoEntity photoEntity) {
         this.photoEntity = photoEntity;
+    }
+
+    public List<MealDietEntity> getDiets() {
+        return diets;
+    }
+
+    public void setMealDietEntityList(List<MealDietEntity> diets) {
+        this.diets = diets;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MealEntity mealEntity = (MealEntity) o;
+        return Objects.equals(name, mealEntity.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }

@@ -62,3 +62,19 @@ databaseChangeLog:
         relativeToChangelogFile: true
         splitStatements: false
         path: Diet.sql
+
+  - changeSet:
+      id: dietUpdate
+      author: Aleksander Reiter
+      sqlFile:
+        relativeToChangelogFile: true
+        splitstatements: false
+        path: dietUpdate.sql
+
+  - changeSet:
+      id: clear
+      author: Aleksander Reiter
+      sqlFile:
+        relativeToChangelogFile: true
+        splitstatements: false
+        path: clear.sql

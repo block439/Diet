@@ -1,8 +1,10 @@
 package pl.jazapp.app.users;
 
 
+import org.hibernate.annotations.ManyToAny;
 import pl.jazapp.app.auctions.AuctionEntity;
 import pl.jazapp.app.categories.CategoriesEntity;
+import pl.jazapp.app.diet.DietEntity;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -37,8 +39,11 @@ public class UserEntity {
     @Column(name = "role",  columnDefinition = "varchar(15) default 'STANDARD'")
     private String role = "STANDARD";
 
-    @OneToMany(mappedBy = "owner")
-    private List<AuctionEntity> owner;
+
+    @ManyToOne
+    @JoinColumn(name="diet_id")
+    private DietEntity diet;
+
 
 
     public String getPassword() {

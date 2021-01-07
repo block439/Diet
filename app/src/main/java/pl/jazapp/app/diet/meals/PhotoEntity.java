@@ -1,7 +1,5 @@
-package pl.jazapp.app.meals;
+package pl.jazapp.app.diet.meals;
 
-
-import org.hibernate.engine.internal.Cascade;
 
 import javax.persistence.*;
 
@@ -19,16 +17,16 @@ public class PhotoEntity {
 
     @OneToOne
     @JoinColumn(name="meal_id")
-    private MealEntity mealEntity;
+    private MealEntity meal;
 
     public PhotoEntity(){
 
     }
 
-    public PhotoEntity(Long id, String url, MealEntity mealEntity){
+    public PhotoEntity(Long id, String url, MealEntity meal){
         this.id = id;
         this.url = url;
-        this.mealEntity = mealEntity;
+        this.meal = meal;
     }
 
     public Long getId() {
@@ -47,11 +45,11 @@ public class PhotoEntity {
         this.url = url;
     }
 
-    public MealEntity getMealEntity() {
-        return mealEntity;
+    public MealEntity getMeal() {
+        return meal;
     }
 
-    public void setMealEntity(MealEntity mealEntity) {
-        this.mealEntity = mealEntity;
+    public void setMeal(MealEntity meal) {
+        this.meal = meal;
     }
 }

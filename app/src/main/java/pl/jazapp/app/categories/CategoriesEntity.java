@@ -4,21 +4,21 @@ import pl.jazapp.app.departments.DepartmentEntity;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name="category")
-@NamedQuery(name="Category.findAll", query="SELECT d FROM CategoriesEntity d")
+//@Entity
+//@Table(name="category")
+//@NamedQuery(name="Category.findAll", query="SELECT d FROM CategoriesEntity d")
 public class CategoriesEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
+  //  @Id
+   // @GeneratedValue(strategy = GenerationType.AUTO)
+   // @Column
     private Long id;
 
-    @Column(name="name")
+  //  @Column(name="name")
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name="department_id")
+  //  @ManyToOne
+  //  @JoinColumn(name="department_id")
     private DepartmentEntity department;
 
     public Long getId() {

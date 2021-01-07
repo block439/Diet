@@ -1,8 +1,7 @@
-package pl.jazapp.app.products;
+package pl.jazapp.app.diet.meals.products;
 
 
 import javax.persistence.*;
-import javax.ws.rs.core.GenericEntity;
 
 @Entity
 @Table(name="productphoto")
@@ -18,13 +17,13 @@ public class PhotoEntity {
 
     @OneToOne
     @JoinColumn(name="product_id")
-    private ProductEntity productEntity;
+    private ProductEntity product;
 
 
-    public PhotoEntity(Long id, String url, ProductEntity productEntity) {
+    public PhotoEntity(Long id, String url, ProductEntity product) {
         this.id = id;
         this.url = url;
-        this.productEntity = productEntity;
+        this.product = product;
     }
 
     public Long getId() {
@@ -43,11 +42,11 @@ public class PhotoEntity {
         this.url = url;
     }
 
-    public ProductEntity getProductEntity() {
-        return productEntity;
+    public ProductEntity getProduct() {
+        return product;
     }
 
-    public void setProductEntity(ProductEntity productEntity) {
-        this.productEntity = productEntity;
+    public void setProduct(ProductEntity product) {
+        this.product = product;
     }
 }

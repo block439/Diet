@@ -1,4 +1,4 @@
-package pl.jazapp.app.meals;
+package pl.jazapp.app.diet.meals;
 
 
 import javax.persistence.Embeddable;
@@ -10,6 +10,13 @@ public class MealDietEntityId implements Serializable {
 
     private Long mealId;
     private Long dietId;
+
+    public MealDietEntityId(){}
+
+    public MealDietEntityId(Long mealId, Long dietId) {
+        this.mealId = mealId;
+        this.dietId = dietId;
+    }
 
     public Long getMealId() {
         return mealId;
@@ -27,12 +34,7 @@ public class MealDietEntityId implements Serializable {
         this.dietId = dietId;
     }
 
-    public MealDietEntityId(){}
 
-    public MealDietEntityId(Long mealId, Long dietId) {
-        this.mealId = mealId;
-        this.dietId = dietId;
-    }
 
     @Override
     public boolean equals(Object o){

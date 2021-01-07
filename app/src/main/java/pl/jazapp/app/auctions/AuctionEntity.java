@@ -10,40 +10,40 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Entity
-@Table(name = "auction")
-@NamedQuery(name="Auction.findAll", query="SELECT d FROM AuctionEntity d")
+//@Entity
+//@Table(name = "auction")
+//@NamedQuery(name="Auction.findAll", query="SELECT d FROM AuctionEntity d")
 public class AuctionEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.AUTO)
+    //@Column(name="id")
     private Long id;
 
-    @Column(name = "title")
+    //@Column(name = "title")
     private String title;
 
-    @Column(name = "description")
+    //@Column(name = "description")
     private String description;
 
-    @Column(name = "price")
+    //@Column(name = "price")
     private BigDecimal price;
 
-    @Column(name="version")
+    //@Column(name="version")
     private Long version;
 
-    @ManyToOne
-    @JoinColumn(name ="owner_id")
+    //@ManyToOne
+    //@JoinColumn(name ="owner_id")
     private UserEntity owner;
 
-    @ManyToOne
-    @JoinColumn(name ="category_id")
+    //@ManyToOne
+    //@JoinColumn(name ="category_id")
     private CategoriesEntity category;
 
-    @OneToMany(mappedBy = "auction",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    //@OneToMany(mappedBy = "auction",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<PhotoEntity> photoList;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "auction", cascade = CascadeType.ALL)
+    //@OneToMany(fetch = FetchType.EAGER, mappedBy = "auction", cascade = CascadeType.ALL)
     private Set<AuctionParameterEntity> auctionParameterEntities;
 
 

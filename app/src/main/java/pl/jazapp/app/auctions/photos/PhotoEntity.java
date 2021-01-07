@@ -5,20 +5,19 @@ import pl.jazapp.app.auctions.AuctionEntity;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name="photo")
+
 public class PhotoEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.AUTO)
+    //@Column
     private Long id;
 
-    @Column(name="url")
+   // @Column(name="url")
     private String url;
 
-    @ManyToOne
-    @JoinColumn(name="auction_id")
+   // @ManyToOne
+   // @JoinColumn(name="auction_id")
     private AuctionEntity auction;
 
 

@@ -1,4 +1,4 @@
-package pl.jazapp.app.products;
+package pl.jazapp.app.diet.meals.products;
 
 
 import javax.persistence.*;

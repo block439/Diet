@@ -4,25 +4,25 @@ import pl.jazapp.app.auctions.parameters.ParameterEntity;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name="auction_parameter")
+//@Entity
+//@Table(name="auction_parameter")
 public class AuctionParameterEntity {
 
 
-    @EmbeddedId
+   // @EmbeddedId
     private AuctionParameterId auctionParameterId = new AuctionParameterId();
 
-    @ManyToOne
-    @MapsId("auctionId")
-    @JoinColumn(name = "auction_id")
+    //@ManyToOne
+   // @MapsId("auctionId")
+   // @JoinColumn(name = "auction_id")
     private AuctionEntity auction;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @MapsId("parameterId")
-    @JoinColumn(name = "parameter_id")
+   // @ManyToOne(cascade = CascadeType.ALL)
+    //@MapsId("parameterId")
+   // @JoinColumn(name = "parameter_id")
     private ParameterEntity parameter = new ParameterEntity();
 
-    @Column(name = "value")
+   // @Column(name = "value")
     private String value;
 
     public AuctionParameterEntity() { }
