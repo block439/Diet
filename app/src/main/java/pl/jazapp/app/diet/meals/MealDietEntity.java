@@ -27,6 +27,7 @@ public class MealDietEntity {
 
     //TODO gettery settery. zmapowac po obu stroinach dlka diety i dla posiłku :)
 
+    public MealDietEntity(){}
 
     public MealDietEntity(MealEntity meal, DietEntity diet) {
         this.id = new MealDietEntityId(meal.getId(), diet.getId());

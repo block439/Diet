@@ -1,6 +1,8 @@
-package pl.jazapp.app.diet.meals.products;
+package pl.jazapp.app.diet.meals.products.photo;
 
 
+
+import pl.jazapp.app.diet.meals.products.ProductEntity;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
@@ -21,3 +23,4 @@ public class PhotoService {
 
 
 }
+//TODO tą klase mozna pominąć. Wróć jeśli można usunąć

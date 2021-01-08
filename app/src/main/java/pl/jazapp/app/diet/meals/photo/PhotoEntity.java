@@ -1,5 +1,7 @@
-package pl.jazapp.app.diet.meals;
+package pl.jazapp.app.diet.meals.photo;
 
+
+import pl.jazapp.app.diet.meals.MealEntity;
 
 import javax.persistence.*;
 
@@ -20,7 +22,6 @@ public class PhotoEntity {
     private MealEntity meal;
 
     public PhotoEntity(){
-
     }
 
     public PhotoEntity(Long id, String url, MealEntity meal){

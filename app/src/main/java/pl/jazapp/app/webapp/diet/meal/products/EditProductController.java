@@ -1,4 +1,4 @@
-package pl.jazapp.app.webapp.diet.products;
+package pl.jazapp.app.webapp.diet.meal.products;
 
 import pl.jazapp.app.ParameterRetriever;
 import pl.jazapp.app.diet.meals.products.ProductEditService;
@@ -16,18 +16,17 @@ public class EditProductController {
 
     @Inject
     ProductEditService productEditService;
-
-
     @Inject
     ParameterRetriever parameterRetriever;
-
     @Inject
     ProductSearchService productSearchService;
+
+
 
     private EditProductRequest editProductRequest;
 
     public EditProductRequest productRequest(){
-        if(productRequest() == null){
+        if(editProductRequest == null){
             if(parameterRetriever.contains("productId")){
                 var productId = parameterRetriever.getParameterAsLong("productId");
                 var productEntity = productEditService.getProductById(productId);

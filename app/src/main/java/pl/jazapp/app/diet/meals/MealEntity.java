@@ -2,6 +2,8 @@ package pl.jazapp.app.diet.meals;
 
 
 
+import pl.jazapp.app.diet.meals.photo.PhotoEntity;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +11,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name="meal")
+@NamedQuery(name="Meal.findAll", query="SELECT d FROM MealEntity d")
 public class MealEntity {
 
     @Id
@@ -22,13 +25,14 @@ public class MealEntity {
     @Column(name="recipe")
     private String recipe;
 
-    @OneToOne(mappedBy = "meal")
+    @OneToOne(mappedBy = "meal", orphanRemoval = true, cascade = CascadeType.ALL)
     private PhotoEntity photoEntity;
 
     @OneToMany(mappedBy = "meal", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MealDietEntity> diets = new ArrayList<>();
 
 
+    public MealEntity(){}
 
     public MealEntity(String name, String recipe){
         this.name = name;

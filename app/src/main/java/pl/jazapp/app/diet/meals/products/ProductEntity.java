@@ -1,6 +1,8 @@
 package pl.jazapp.app.diet.meals.products;
 
 
+import pl.jazapp.app.diet.meals.products.photo.PhotoEntity;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,7 +18,7 @@ public class ProductEntity {
     @Column(name="name")
     private String name;
 
-    @OneToOne(mappedBy = "product")
+    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private PhotoEntity photo;
 
 

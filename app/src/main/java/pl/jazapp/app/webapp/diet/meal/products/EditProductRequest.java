@@ -1,7 +1,7 @@
-package pl.jazapp.app.webapp.diet.products;
+package pl.jazapp.app.webapp.diet.meal.products;
 
 
-import pl.jazapp.app.diet.meals.products.PhotoEntity;
+import pl.jazapp.app.diet.meals.products.photo.PhotoEntity;
 import pl.jazapp.app.diet.meals.products.ProductEntity;
 
 import javax.enterprise.context.RequestScoped;
