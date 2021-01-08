@@ -13,6 +13,7 @@ import java.util.List;
 @Named
 @RequestScoped
 public class EditDepartmentController {
+
     @Inject
     DepartmentEditService departmentEditService;
     @Inject

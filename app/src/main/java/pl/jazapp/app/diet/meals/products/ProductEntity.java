@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="product")
+@NamedQuery(name="Product.findAll", query="SELECT d FROM ProductEntity d")
 public class ProductEntity {
 
     @Id
@@ -16,13 +17,15 @@ public class ProductEntity {
     private String name;
 
     @OneToOne(mappedBy = "product")
-    private PhotoEntity photoEntity;
+    private PhotoEntity photo;
 
+
+    public ProductEntity(){}
 
     public ProductEntity(Long id, String name, PhotoEntity photoEntity) {
         this.id = id;
         this.name = name;
-        this.photoEntity = photoEntity;
+        this.photo = photoEntity;
     }
 
     public Long getId() {
@@ -41,11 +44,11 @@ public class ProductEntity {
         this.name = name;
     }
 
-    public PhotoEntity getPhotoEntity() {
-        return photoEntity;
+    public PhotoEntity getPhoto() {
+        return photo;
     }
 
-    public void setPhotoEntity(PhotoEntity photoEntity) {
-        this.photoEntity = photoEntity;
+    public void setPhoto(PhotoEntity photoEntity) {
+        this.photo = photoEntity;
     }
 }

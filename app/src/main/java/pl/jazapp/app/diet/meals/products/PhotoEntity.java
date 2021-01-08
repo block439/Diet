@@ -19,6 +19,12 @@ public class PhotoEntity {
     @JoinColumn(name="product_id")
     private ProductEntity product;
 
+    public PhotoEntity(){}
+
+    public PhotoEntity(String url, ProductEntity product) {
+        this.url = url;
+        this.product = product;
+    }
 
     public PhotoEntity(Long id, String url, ProductEntity product) {
         this.id = id;

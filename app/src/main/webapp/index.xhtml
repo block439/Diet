@@ -14,15 +14,15 @@
 <h:body>
     <div class="form-group">
 
-        <h:dataTable class="form-group" border="2" value="#{editAuctionController.listOfAllAuctions}" var="auction" width="350" height="350">
+        <h:dataTable class="form-group" border="2" value="#{editProductController.listOfAllProducts}" var="product" width="350" height="350">
 
 
             <h:column>
-                <h:outputText id="title-#{auction.title}" value="#{auction.title}"/>
+                <h:outputText id="title-#{product.name}" value="#{product.name}"/>
             </h:column>
 
             <h:column>
-                <ui:repeat  value="#{auction.photoList}" var="photo">
+                <ui:repeat value="#{product.photo}" var="photo">
                     <h:column>
                         <h:graphicImage id="photo-#{photo.id}" value="#{photo.url}" width="200" height="200"/>
                     </h:column>
