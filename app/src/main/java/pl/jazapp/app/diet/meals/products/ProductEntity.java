@@ -4,6 +4,7 @@ package pl.jazapp.app.diet.meals.products;
 import pl.jazapp.app.diet.meals.products.photo.PhotoEntity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="product")
@@ -20,6 +21,10 @@ public class ProductEntity {
 
     @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private PhotoEntity photo;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MealProductEntity> meals;
+
 
 
     public ProductEntity(){}
@@ -53,4 +58,13 @@ public class ProductEntity {
     public void setPhoto(PhotoEntity photoEntity) {
         this.photo = photoEntity;
     }
+
+    public List<MealProductEntity> getMeals() {
+        return meals;
+    }
+
+    public void setMeals(List<MealProductEntity> meals) {
+        this.meals = meals;
+    }
+
 }

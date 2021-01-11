@@ -3,6 +3,7 @@ package pl.jazapp.app.diet.meals;
 
 
 import pl.jazapp.app.diet.meals.photo.PhotoEntity;
+import pl.jazapp.app.diet.meals.products.MealProductEntity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -30,6 +31,9 @@ public class MealEntity {
 
     @OneToMany(mappedBy = "meal", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MealDietEntity> diets = new ArrayList<>();
+
+    @OneToMany(mappedBy = "meal", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MealProductEntity> products = new ArrayList<>();
 
 
     public MealEntity(){}
