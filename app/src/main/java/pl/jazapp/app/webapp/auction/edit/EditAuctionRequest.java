@@ -16,10 +16,8 @@ public class EditAuctionRequest {
 
     @Inject
     UserSearchService userSearchService;
-
     @Inject
     CategorySearchService categorySearchService;
-
     @Inject
     UserContext userContext;
 

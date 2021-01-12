@@ -26,24 +26,20 @@ public class EditAuctionController {
 
     @Inject
     AuctionEditService auctionEditService;
-
     @Inject
     ParameterRetriever parameterRetriever;
-
     @Inject
     CategorySearchService categorySearchService;
-
     @Inject
     UserSearchService userSearchService;
-
     @Inject
     PhotoService photoService;
-
     @Inject
     UserContext userContext;
-
     @Inject
     AuctionSearchService auctionSearchService;
+
+
 
 
     private EditAuctionRequest editAuctionRequest;
@@ -64,6 +60,7 @@ public class EditAuctionController {
 
 
 
+
     public String save(){
         editAuctionRequest.userSearchService=userSearchService;
         editAuctionRequest.categorySearchService=categorySearchService;
@@ -71,6 +68,8 @@ public class EditAuctionController {
         var auction = editAuctionRequest.toAuctionEntity();
         auctionEditService.saveAuction(auction);
         var auctionPhotoList = new LinkedList<PhotoEntity>();
+
+
 
 
         if(photoService.getPhotoByAuction(auction).size() == 0){

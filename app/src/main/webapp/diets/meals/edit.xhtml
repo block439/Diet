@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+
+>
+<h:head>
+    <h:outputStylesheet name="main.css" library="css"/>
+    <h:outputStylesheet name="boostrap.min.css" library="css"/>
+</h:head>
+<h:body>
+
+
+    <h:form StyleClass="form-base">
+        <h:inputHidden id="id" value="#{editMealController.mealRequest().id}"/>
+        <div  class="form-group">
+            <h:inputText id="name" styleClass="form-control" a:placeholder="Name"
+                         value="#{editMealController.mealRequest().name}">
+            </h:inputText>
+        </div>
+
+        <div  class="form-group">
+            <h:inputText id="photo" styleClass="form-control" a:placeholder="Photo"
+                         value="#{editMealController.mealRequest().photo}">
+            </h:inputText>
+        </div>
+
+        <div  class="form-group">
+            <h:inputText id="recipe" styleClass="form-control" a:placeholder="Recipe"
+                         value="#{editMealController.mealRequest().recipe}">
+            </h:inputText>
+        </div>
+
+        <div class="form-group">
+            <h:selectOneMenu id="product" value="#{editMealController.mealRequest().productId1}">
+                <f:selectItems value="#{editMealController.listOfAllProducts}"
+                               var ="it"
+                               itemLabel="#{it.name}"
+                               itemValue="#{it.id}"/>
+            </h:selectOneMenu>
+        </div>
+
+
+        <div class="form-group">
+            <h:commandButton styleClass="btn btn-primary" id="save" value="save" action="#{editMealController.save()}" /><br/>
+        </div>
+
+    </h:form>
+
+</h:body>
+</html>

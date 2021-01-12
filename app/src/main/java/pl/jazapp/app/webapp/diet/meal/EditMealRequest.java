@@ -4,14 +4,24 @@ package pl.jazapp.app.webapp.diet.meal;
 
 import pl.jazapp.app.diet.meals.MealEntity;
 import pl.jazapp.app.diet.meals.photo.PhotoEntity;
+import pl.jazapp.app.diet.meals.products.MealProductEntity;
+import pl.jazapp.app.diet.meals.products.ProductEditService;
 import pl.jazapp.app.diet.meals.products.ProductEntity;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.LinkedList;
+import java.util.List;
 
 @Named
 @RequestScoped
 public class EditMealRequest {
+
+    @Inject
+    ProductEditService productEditService;
+
+
 
     private Long id;
     private String name;
@@ -39,6 +49,51 @@ public class EditMealRequest {
         mealEntity.setName(name);
         mealEntity.setRecipe(recipe);
         mealEntity.setPhotoEntity(new PhotoEntity(photo,mealEntity));
-        mealEntity.setProducts(new ProductEntity());
+        var productsList = new LinkedList<MealProductEntity>();
+        productsList.add(new MealProductEntity(mealEntity,productEditService.getProductById(productId1)));
+        mealEntity.setProducts(productsList);
+        return mealEntity;
+        //TODO null
+    }
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getRecipe() {
+        return recipe;
+    }
+
+    public void setRecipe(String recipe) {
+        this.recipe = recipe;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public Long getProductId1() {
+        return productId1;
+    }
+
+    public void setProductId1(Long productId1) {
+        this.productId1 = productId1;
     }
 }

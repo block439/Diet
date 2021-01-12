@@ -29,9 +29,9 @@ public class MealProductEntity {
     public MealProductEntity() {
     }
 
-    public MealProductEntity( MealEntity meal, ProductEntity productEntity) {
+    public MealProductEntity( MealEntity mealEntity, ProductEntity productEntity) {
         this.id = new MealProductEntityId(meal.getId(), product.getId());
-        this.meal = meal;
+        this.meal = mealEntity;
         this.product = productEntity;
     }
 
