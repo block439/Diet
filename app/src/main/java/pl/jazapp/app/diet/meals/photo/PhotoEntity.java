@@ -30,6 +30,11 @@ public class PhotoEntity {
         this.meal = meal;
     }
 
+    public PhotoEntity(String url, MealEntity meal) {
+        this.url = url;
+        this.meal = meal;
+    }
+
     public Long getId() {
         return id;
     }

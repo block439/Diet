@@ -83,6 +83,18 @@ public class MealEntity {
         this.diets = diets;
     }
 
+    public void setDiets(List<MealDietEntity> diets) {
+        this.diets = diets;
+    }
+
+    public List<MealProductEntity> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<MealProductEntity> products) {
+        this.products = products;
+    }
+
     @Override
     public boolean equals(Object o){
         if (this == o) return true;
