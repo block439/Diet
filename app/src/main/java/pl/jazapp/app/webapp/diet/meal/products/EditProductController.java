@@ -39,7 +39,8 @@ public class EditProductController {
     }
 
     public String save(){
-              productEditService.saveProduct(editProductRequest.toProductEntity());
+        var product = editProductRequest.toProductEntity();
+              productEditService.saveProduct(product);
         return "/diets/products/list.xhtml?faces-redirect=true";
     }
 

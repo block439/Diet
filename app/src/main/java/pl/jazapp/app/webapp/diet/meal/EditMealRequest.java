@@ -49,11 +49,14 @@ public class EditMealRequest {
         mealEntity.setName(name);
         mealEntity.setRecipe(recipe);
         mealEntity.setPhotoEntity(new PhotoEntity(photo,mealEntity));
+        var mealProduct = new MealProductEntity();
+        mealProduct.setMeal(mealEntity);
+        mealProduct.setProduct(productEditService.getProductById(productId1));
         var productsList = new LinkedList<MealProductEntity>();
-        productsList.add(new MealProductEntity(mealEntity,productEditService.getProductById(productId1)));
+        productsList.add(mealProduct);
         mealEntity.setProducts(productsList);
         return mealEntity;
-        //TODO null
+
     }
 
 

@@ -8,6 +8,8 @@ import java.util.Objects;
 @Embeddable
 public class MealProductEntityId implements Serializable {
 
+    private static final long serialVersionUID = -2403746842148223177L;
+
     private Long mealId;
     private Long productId;
 

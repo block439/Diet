@@ -14,18 +14,17 @@ public class MealDietEntity {
     @EmbeddedId
     private MealDietEntityId id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @MapsId("mealId")
     private MealEntity meal;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @MapsId("dietId")
     private DietEntity diet;
 
     @Column(name = "weeknumber")
     private Long weekNumber;
 
-    //TODO gettery settery. zmapowac po obu stroinach dlka diety i dla posiłku :)
 
     public MealDietEntity(){}
 

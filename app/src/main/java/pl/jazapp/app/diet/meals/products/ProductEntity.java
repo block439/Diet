@@ -4,6 +4,7 @@ package pl.jazapp.app.diet.meals.products;
 import pl.jazapp.app.diet.meals.products.photo.PhotoEntity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,11 +20,11 @@ public class ProductEntity {
     @Column(name="name")
     private String name;
 
-    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(mappedBy = "product", cascade = CascadeType.MERGE, orphanRemoval = true)
     private PhotoEntity photo;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    private List<MealProductEntity> meals;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.MERGE)
+    private List<MealProductEntity> meals = new ArrayList<>();
 
 
 
@@ -33,6 +34,13 @@ public class ProductEntity {
         this.id = id;
         this.name = name;
         this.photo = photoEntity;
+    }
+
+    public ProductEntity(Long id, String name, PhotoEntity photo, List<MealProductEntity> meals) {
+        this.id = id;
+        this.name = name;
+        this.photo = photo;
+        this.meals = meals;
     }
 
     public Long getId() {
@@ -66,5 +74,6 @@ public class ProductEntity {
     public void setMeals(List<MealProductEntity> meals) {
         this.meals = meals;
     }
+
 
 }

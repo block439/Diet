@@ -3,6 +3,7 @@ package pl.jazapp.app.webapp.diet.meal;
 
 import pl.jazapp.app.ParameterRetriever;
 import pl.jazapp.app.diet.meals.MealEditService;
+import pl.jazapp.app.diet.meals.products.ProductEditService;
 import pl.jazapp.app.diet.meals.products.ProductEntity;
 import pl.jazapp.app.diet.meals.products.ProductSearchService;
 
@@ -21,6 +22,8 @@ public class EditMealController {
     MealEditService mealEditService;
     @Inject
     ProductSearchService productSearchService;
+    @Inject
+    ProductEditService productEditService;
 
     private EditMealRequest mealRequest;
 
@@ -38,7 +41,10 @@ public class EditMealController {
     }
 
     public String save(){
-        mealEditService.saveMeal(mealRequest.toMealEntity());
+        mealRequest.productEditService=productEditService;
+        var meal = mealRequest.toMealEntity();
+        var product = mealRequest.productEditService.getProductById(mealRequest.getProductId1());
+        mealEditService.saveMeal(meal,product);
         return "diets/meals/list.xhtml?faces-redirect=true";
     }
 

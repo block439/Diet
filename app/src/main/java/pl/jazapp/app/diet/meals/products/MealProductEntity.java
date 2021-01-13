@@ -1,5 +1,6 @@
 package pl.jazapp.app.diet.meals.products;
 
+import org.hibernate.annotations.Cascade;
 import pl.jazapp.app.diet.meals.MealEntity;
 
 import javax.persistence.*;
@@ -10,17 +11,17 @@ import java.util.List;
 public class MealProductEntity {
 
     @EmbeddedId
-    private MealProductEntityId id;
+    private MealProductEntityId id = new MealProductEntityId();
 
     @Column(name="amount")
     private double amount;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @MapsId("mealId")
     @JoinColumn(name="meal_id")
     private MealEntity meal;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @MapsId("productId")
     @JoinColumn(name="product_id")
     private ProductEntity product;
@@ -33,6 +34,7 @@ public class MealProductEntity {
         this.id = new MealProductEntityId(meal.getId(), product.getId());
         this.meal = mealEntity;
         this.product = productEntity;
+        this.amount = 1;
     }
 
     public MealProductEntityId getId() {

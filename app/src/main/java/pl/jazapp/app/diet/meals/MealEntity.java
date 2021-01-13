@@ -2,6 +2,7 @@ package pl.jazapp.app.diet.meals;
 
 
 
+import org.hibernate.annotations.Cascade;
 import pl.jazapp.app.diet.meals.photo.PhotoEntity;
 import pl.jazapp.app.diet.meals.products.MealProductEntity;
 
@@ -32,7 +33,8 @@ public class MealEntity {
     @OneToMany(mappedBy = "meal", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MealDietEntity> diets = new ArrayList<>();
 
-    @OneToMany(mappedBy = "meal", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "meal", orphanRemoval = true)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<MealProductEntity> products = new ArrayList<>();
 
 
@@ -85,7 +87,7 @@ public class MealEntity {
 
     public void setDiets(List<MealDietEntity> diets) {
         this.diets = diets;
-    }
+   }
 
     public List<MealProductEntity> getProducts() {
         return products;
