@@ -1,6 +1,7 @@
 package pl.jazapp.app.diet.meals;
 
 
+import pl.jazapp.app.diet.meals.products.MealProductEntity;
 import pl.jazapp.app.diet.meals.products.ProductEntity;
 import pl.jazapp.app.diet.meals.products.photo.PhotoEntity;
 
@@ -15,12 +16,20 @@ public class MealEditService {
     private EntityManager em;
 
     @Transactional
-    public void saveMeal(MealEntity mealEntity, ProductEntity productEntity){
+    public void saveMeal(MealEntity mealEntity){
         if(mealEntity.getId() == null){
             em.persist(mealEntity);
         }else {
-            //TODO wymyslec jak zapisywac najpierw mealentity i następnie mergować tabele product.
             em.merge(mealEntity);
+        }
+    }
+
+    @Transactional
+    public void saveMealProduct(MealProductEntity mealProductEntity){
+        if(mealProductEntity.getId() == null){
+            em.persist(mealProductEntity);
+        }else {
+            em.merge(mealProductEntity);
         }
     }
 

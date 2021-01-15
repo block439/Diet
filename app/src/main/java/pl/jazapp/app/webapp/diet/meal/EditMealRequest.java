@@ -2,17 +2,16 @@ package pl.jazapp.app.webapp.diet.meal;
 
 
 
+import pl.jazapp.app.diet.meals.MealEditService;
 import pl.jazapp.app.diet.meals.MealEntity;
 import pl.jazapp.app.diet.meals.photo.PhotoEntity;
 import pl.jazapp.app.diet.meals.products.MealProductEntity;
 import pl.jazapp.app.diet.meals.products.ProductEditService;
-import pl.jazapp.app.diet.meals.products.ProductEntity;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.LinkedList;
-import java.util.List;
 
 @Named
 @RequestScoped
@@ -20,13 +19,14 @@ public class EditMealRequest {
 
     @Inject
     ProductEditService productEditService;
-
-
+    @Inject
+    MealEditService mealEditService;
 
     private Long id;
     private String name;
     private String recipe;
     private String photo;
+    //TODO edit tego productu na jakiś zbiór danych.
     private Long productId1;
 
 
@@ -39,7 +39,7 @@ public class EditMealRequest {
         this.recipe = mealEntity.getRecipe();
         this.photo = mealEntity.getPhotoEntity().getUrl();
         this.productId1 = mealEntity.getProducts().iterator().next()
-                            .getId().getProductId();
+                            .getProduct().getId();
         //TODO przemyslec jak iterowac na tabeli laczacej i jednoczesnie na tabeli do niej połączonej
     }
 
@@ -52,6 +52,7 @@ public class EditMealRequest {
         var mealProduct = new MealProductEntity();
         mealProduct.setMeal(mealEntity);
         mealProduct.setProduct(productEditService.getProductById(productId1));
+        mealEditService.saveMealProduct(mealProduct);
         var productsList = new LinkedList<MealProductEntity>();
         productsList.add(mealProduct);
         mealEntity.setProducts(productsList);

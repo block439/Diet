@@ -34,13 +34,13 @@ public class DietEntity {
     @OneToMany(mappedBy = "diet", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DietParameterEntity> parameters = new ArrayList<>();
 
+
+    public DietEntity(){}
+
     public DietEntity(String title, String description) {
         this.title = title;
         this.description = description;
     }
-
-
-
 
     public Long getId() {
         return id;
@@ -64,6 +64,14 @@ public class DietEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<MealDietEntity> getMeals() {
+        return meals;
+    }
+
+    public void setMeals(List<MealDietEntity> meals) {
+        this.meals = meals;
     }
 
     @Override

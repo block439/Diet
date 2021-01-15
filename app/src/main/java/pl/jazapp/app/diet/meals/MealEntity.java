@@ -33,8 +33,8 @@ public class MealEntity {
     @OneToMany(mappedBy = "meal", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MealDietEntity> diets = new ArrayList<>();
 
-    @OneToMany(mappedBy = "meal", orphanRemoval = true)
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @OneToMany(mappedBy = "meal", orphanRemoval = true, fetch = FetchType.EAGER)
+    @Cascade(org.hibernate.annotations.CascadeType.MERGE)
     private List<MealProductEntity> products = new ArrayList<>();
 
 

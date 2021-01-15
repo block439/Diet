@@ -42,9 +42,11 @@ public class EditMealController {
 
     public String save(){
         mealRequest.productEditService=productEditService;
+        mealRequest.mealEditService = mealEditService;
         var meal = mealRequest.toMealEntity();
         var product = mealRequest.productEditService.getProductById(mealRequest.getProductId1());
-        mealEditService.saveMeal(meal,product);
+        //mealEditService.saveMealProduct(mealRequest.me);
+        mealEditService.saveMeal(meal);
         return "diets/meals/list.xhtml?faces-redirect=true";
     }
 
