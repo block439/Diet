@@ -12,7 +12,7 @@ import java.util.Objects;
 public class MealDietEntity {
 
     @EmbeddedId
-    private MealDietEntityId id;
+    private MealDietEntityId id = new MealDietEntityId();
 
     @ManyToOne()
     @MapsId("mealId")

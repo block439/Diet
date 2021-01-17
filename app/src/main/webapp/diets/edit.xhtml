@@ -16,28 +16,22 @@
 
 
     <h:form StyleClass="form-base">
-        <h:inputHidden id="id" value="#{editMealController.mealRequest().id}"/>
+        <h:inputHidden id="id" value="#{editDietController.dietRequest().id}"/>
         <div  class="form-group">
             <h:inputText id="name" styleClass="form-control" a:placeholder="Name"
-                         value="#{editMealController.mealRequest().name}">
+                         value="#{editDietController.dietRequest().title}">
             </h:inputText>
         </div>
 
         <div  class="form-group">
-            <h:inputText id="photo" styleClass="form-control" a:placeholder="Photo"
-                         value="#{editMealController.mealRequest().photo}">
-            </h:inputText>
-        </div>
-
-        <div  class="form-group">
-            <h:inputText id="recipe" styleClass="form-control" a:placeholder="Recipe"
-                         value="#{editMealController.mealRequest().recipe}">
+            <h:inputText id="photo" styleClass="form-control" a:placeholder="Description"
+                         value="#{editDietController.dietRequest().description}">
             </h:inputText>
         </div>
 
         <div class="form-group">
-            <h:selectOneMenu id="product" value="#{editMealController.mealRequest().productId1}">
-                <f:selectItems value="#{editMealController.listOfAllProducts}"
+            <h:selectOneMenu id="product" value="#{editDietController.dietRequest().mealId}">
+                <f:selectItems value="#{editDietController.listOfAllMeals}"
                                var ="it"
                                itemLabel="#{it.name}"
                                itemValue="#{it.id}"/>
@@ -46,7 +40,7 @@
 
 
         <div class="form-group">
-            <h:commandButton styleClass="btn btn-primary" id="save" value="save" action="#{editMealController.save()}" /><br/>
+            <h:commandButton styleClass="btn btn-primary" id="save" value="save" action="#{editDietController.save()}" /><br/>
         </div>
 
     </h:form>

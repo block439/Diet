@@ -12,6 +12,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name="diet")
+@NamedQuery(name="Diet.findAll", query="SELECT d FROM DietEntity d")
 public class DietEntity {
 
     @Id
@@ -25,7 +26,7 @@ public class DietEntity {
     @Column(name="description")
     private String description;
 
-    @OneToMany(mappedBy = "diet", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "diet", cascade = CascadeType.MERGE, orphanRemoval = true)
     private List<MealDietEntity> meals = new ArrayList<>();
 
     @OneToMany(mappedBy = "diet", cascade = CascadeType.ALL, orphanRemoval = true)

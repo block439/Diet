@@ -34,8 +34,6 @@ public class MealDietEntityId implements Serializable {
         this.dietId = dietId;
     }
 
-
-
     @Override
     public boolean equals(Object o){
         if(this == o) return true;

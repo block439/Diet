@@ -10,6 +10,7 @@ import pl.jazapp.app.webapp.diet.meal.EditMealRequest;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.LinkedList;
 import java.util.List;
 
 @Named
@@ -45,7 +46,9 @@ public class EditDietRequest {
         var dietMeal = new MealDietEntity();
         dietMeal.setDiet(dietEntity);
         dietMeal.setMeal(mealEditService.getMealById(mealId));
-        //TODO setowanie meal
+        var mealList = new LinkedList<MealDietEntity>();
+        mealList.add(dietMeal);
+        dietEntity.setMeals(mealList);
         return dietEntity;
     }
 

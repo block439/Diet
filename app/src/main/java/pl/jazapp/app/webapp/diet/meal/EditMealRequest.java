@@ -52,7 +52,6 @@ public class EditMealRequest {
         var mealProduct = new MealProductEntity();
         mealProduct.setMeal(mealEntity);
         mealProduct.setProduct(productEditService.getProductById(productId1));
-        mealEditService.saveMealProduct(mealProduct);
         var productsList = new LinkedList<MealProductEntity>();
         productsList.add(mealProduct);
         mealEntity.setProducts(productsList);

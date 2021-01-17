@@ -44,9 +44,7 @@ public class EditMealController {
         mealRequest.productEditService=productEditService;
         mealRequest.mealEditService = mealEditService;
         var meal = mealRequest.toMealEntity();
-        var product = mealRequest.productEditService.getProductById(mealRequest.getProductId1());
-        //mealEditService.saveMealProduct(mealRequest.me);
-        mealEditService.saveMeal(meal);
+        mealEditService.saveMealProduct(meal.getProducts().iterator().next());
         return "diets/meals/list.xhtml?faces-redirect=true";
     }
 
