@@ -16,12 +16,12 @@ public class MealProductEntity {
     @Column(name="amount")
     private double amount;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @MapsId("mealId")
     @JoinColumn(name="meal_id")
     private MealEntity meal;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @MapsId("productId")
     @JoinColumn(name="product_id")
     private ProductEntity product;

@@ -26,6 +26,8 @@ public class EditDietController {
     MealEditService mealEditService;
     @Inject
     MealSearchService mealSearchService;
+    @Inject
+    DietSearchService dietSearchService;
 
 
     private EditDietRequest dietRequest;
@@ -34,7 +36,7 @@ public class EditDietController {
         if(dietRequest == null){
             if(parameterRetriever.contains("dietId")){
                 var dietId = parameterRetriever.getParameterAsLong("dietId");
-                var dietEntity = dietRequest.dietEditService.getDietById(dietId);
+                var dietEntity = dietEditService.getDietById(dietId);
                 dietRequest = new EditDietRequest(dietEntity);
             }
             else
@@ -50,11 +52,14 @@ public class EditDietController {
         dietRequest.mealEditService = mealEditService;
         var diet = dietRequest.toDietEntity();
         dietEditService.saveMealDiet(diet.getMeals().iterator().next());
-        return "diets/list.xhtml?faces-redirect=true";
+        return "/diets/list.xhtml?faces-redirect=true";
     }
 
     public List<MealEntity> getListOfAllMeals(){
         return mealSearchService.listOfAllMeals();
+    }
+    public List<DietEntity> getListOfAllDiets(){
+        return dietSearchService.listOfAllDiets();
     }
 
 }

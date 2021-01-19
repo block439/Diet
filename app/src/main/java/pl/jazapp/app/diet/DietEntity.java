@@ -26,7 +26,7 @@ public class DietEntity {
     @Column(name="description")
     private String description;
 
-    @OneToMany(mappedBy = "diet", cascade = CascadeType.MERGE, orphanRemoval = true)
+    @OneToMany(mappedBy = "diet", cascade = CascadeType.MERGE, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<MealDietEntity> meals = new ArrayList<>();
 
     @OneToMany(mappedBy = "diet", cascade = CascadeType.ALL, orphanRemoval = true)

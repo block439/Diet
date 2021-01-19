@@ -3,6 +3,9 @@ package pl.jazapp.app.webapp.diet.meal;
 
 import pl.jazapp.app.ParameterRetriever;
 import pl.jazapp.app.diet.meals.MealEditService;
+import pl.jazapp.app.diet.meals.MealEntity;
+import pl.jazapp.app.diet.meals.MealSearchService;
+import pl.jazapp.app.diet.meals.products.MealProductEntity;
 import pl.jazapp.app.diet.meals.products.ProductEditService;
 import pl.jazapp.app.diet.meals.products.ProductEntity;
 import pl.jazapp.app.diet.meals.products.ProductSearchService;
@@ -10,6 +13,7 @@ import pl.jazapp.app.diet.meals.products.ProductSearchService;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.LinkedList;
 import java.util.List;
 
 @Named
@@ -20,6 +24,8 @@ public class EditMealController {
     ParameterRetriever parameterRetriever;
     @Inject
     MealEditService mealEditService;
+    @Inject
+    MealSearchService mealSearchService;
     @Inject
     ProductSearchService productSearchService;
     @Inject
@@ -43,19 +49,21 @@ public class EditMealController {
     public String save(){
         mealRequest.productEditService=productEditService;
         mealRequest.mealEditService = mealEditService;
+
         var meal = mealRequest.toMealEntity();
+
+
         mealEditService.saveMealProduct(meal.getProducts().iterator().next());
-        return "diets/meals/list.xhtml?faces-redirect=true";
+        return "/diets/meals/list.xhtml?faces-redirect=true";
     }
 
 
-    public List<ProductEntity> getListOfAllProducts(){
-        return productSearchService.listOfAllProducts();
-
+    public List<MealEntity> getListOfAllMeals(){
+        return mealSearchService.listOfAllMeals();
     }
 
 
-
+    public List<ProductEntity> getListOfAllProducts(){return productSearchService.listOfAllProducts();}
 
 
 }

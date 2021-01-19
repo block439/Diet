@@ -20,7 +20,7 @@ public class ProductEntity {
     @Column(name="name")
     private String name;
 
-    @OneToOne(mappedBy = "product", cascade = CascadeType.MERGE, orphanRemoval = true)
+    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private PhotoEntity photo;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.MERGE)

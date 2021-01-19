@@ -26,7 +26,8 @@ public class DietParameterEntity {
     @Column(name = "value")
     private String value;
 
-
+    public DietParameterEntity() {
+    }
 
     public DietParameterEntity(DietEntity diet, ParameterEntity parameter) {
         this.id = new DietParameterEntityId(diet.getId(), parameter.getId());

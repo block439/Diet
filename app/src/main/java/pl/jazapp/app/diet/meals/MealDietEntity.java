@@ -14,11 +14,11 @@ public class MealDietEntity {
     @EmbeddedId
     private MealDietEntityId id = new MealDietEntityId();
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @MapsId("mealId")
     private MealEntity meal;
 
-    @ManyToOne()
+    @ManyToOne(cascade =  CascadeType.MERGE, fetch = FetchType.EAGER)
     @MapsId("dietId")
     private DietEntity diet;
 
