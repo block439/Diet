@@ -5,10 +5,7 @@ import pl.jazapp.app.ParameterRetriever;
 import pl.jazapp.app.diet.meals.MealEditService;
 import pl.jazapp.app.diet.meals.MealEntity;
 import pl.jazapp.app.diet.meals.MealSearchService;
-import pl.jazapp.app.diet.meals.products.MealProductEntity;
-import pl.jazapp.app.diet.meals.products.ProductEditService;
-import pl.jazapp.app.diet.meals.products.ProductEntity;
-import pl.jazapp.app.diet.meals.products.ProductSearchService;
+import pl.jazapp.app.diet.meals.products.*;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;

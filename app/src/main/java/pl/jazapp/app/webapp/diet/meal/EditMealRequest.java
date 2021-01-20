@@ -2,6 +2,7 @@ package pl.jazapp.app.webapp.diet.meal;
 
 
 
+import pl.jazapp.app.diet.meals.MealDietEntity;
 import pl.jazapp.app.diet.meals.MealEditService;
 import pl.jazapp.app.diet.meals.MealEntity;
 import pl.jazapp.app.diet.meals.photo.PhotoEntity;
@@ -14,6 +15,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.LinkedList;
+import java.util.List;
 
 @Named
 @RequestScoped
@@ -30,7 +32,7 @@ public class EditMealRequest {
     private String photo;
     //TODO edit tego productu na jakiś zbiór danych.
     private Long productId1;
-    private MealProductEntity product;
+    private List<MealProductEntity> product;
 
 
     public EditMealRequest() {
@@ -41,7 +43,8 @@ public class EditMealRequest {
         this.name = mealEntity.getName();
         this.recipe = mealEntity.getRecipe();
         this.photo = mealEntity.getPhotoEntity().getUrl();
-        this.product = mealEntity.getProducts().iterator().next();
+        this.product = mealEntity.getProducts();
+        this.productId1 = product.iterator().next().getProduct().getId();
         //TODO przemyslec jak iterowac na tabeli laczacej i jednoczesnie na tabeli do niej połączonej
     }
 
@@ -52,9 +55,9 @@ public class EditMealRequest {
         mealEntity.setRecipe(recipe);
         mealEntity.setPhotoEntity(new PhotoEntity(photo,mealEntity));
         var mealProduct = new MealProductEntity();
-      //  if(mealEntity.getId() != null) {
-      //      mealProduct.setId(new MealProductEntityId(mealEntity.getId(),mealEntity.getProducts().iterator().next().getId().getProductId()));
-    //    }
+        //  if(mealEntity.getId() != null) {
+        //      mealProduct.setId(new MealProductEntityId(mealEntity.getId(),mealEntity.getProducts().iterator().next().getId().getProductId()));
+        //    }
         mealProduct.setMeal(mealEntity);
         mealProduct.setProduct(productEditService.getProductById(productId1));
         var productsList = new LinkedList<MealProductEntity>();
@@ -62,7 +65,6 @@ public class EditMealRequest {
         mealEntity.setProducts(productsList);
 
         return mealEntity;
-
     }
 
 
@@ -104,5 +106,13 @@ public class EditMealRequest {
 
     public void setProductId1(Long productId1) {
         this.productId1 = productId1;
+    }
+
+    public List<MealProductEntity> getProduct() {
+        return product;
+    }
+
+    public void setProduct(List<MealProductEntity> product) {
+        this.product = product;
     }
 }

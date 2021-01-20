@@ -1,6 +1,8 @@
 package pl.jazapp.app.diet.meals.products;
 
 
+import pl.jazapp.app.diet.meals.MealEntity;
+
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
@@ -28,6 +30,7 @@ public class MealProductEntityId implements Serializable {
     public void setMealId(Long mealId) {
         this.mealId = mealId;
     }
+
 
     public Long getProductId() {
         return productId;
