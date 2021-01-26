@@ -1,6 +1,7 @@
 package pl.jazapp.app.diet.meals.products;
 
 
+import org.hibernate.annotations.Cascade;
 import pl.jazapp.app.diet.meals.products.photo.PhotoEntity;
 
 import javax.persistence.*;
@@ -24,6 +25,7 @@ public class ProductEntity {
     private PhotoEntity photo;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.MERGE)
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     private List<MealProductEntity> meals = new ArrayList<>();
 
 

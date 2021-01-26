@@ -1,15 +1,12 @@
 package pl.jazapp.app.webapp.diet.meal;
 
 
-
-import pl.jazapp.app.diet.meals.MealDietEntity;
 import pl.jazapp.app.diet.meals.MealEditService;
 import pl.jazapp.app.diet.meals.MealEntity;
 import pl.jazapp.app.diet.meals.photo.PhotoEntity;
 import pl.jazapp.app.diet.meals.products.MealProductEntity;
-import pl.jazapp.app.diet.meals.products.MealProductEntityId;
 import pl.jazapp.app.diet.meals.products.ProductEditService;
-import pl.jazapp.app.diet.meals.products.ProductEntity;
+
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -55,9 +52,9 @@ public class EditMealRequest {
         mealEntity.setRecipe(recipe);
         mealEntity.setPhotoEntity(new PhotoEntity(photo,mealEntity));
         var mealProduct = new MealProductEntity();
-        //  if(mealEntity.getId() != null) {
-        //      mealProduct.setId(new MealProductEntityId(mealEntity.getId(),mealEntity.getProducts().iterator().next().getId().getProductId()));
-        //    }
+        if(id != null) {
+            mealProduct.setId(mealEditService.getMealById(id).getProducts().iterator().next().getId());
+        }
         mealProduct.setMeal(mealEntity);
         mealProduct.setProduct(productEditService.getProductById(productId1));
         var productsList = new LinkedList<MealProductEntity>();

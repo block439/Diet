@@ -44,6 +44,9 @@ public class EditDietRequest {
         dietEntity.setTitle(title);
         dietEntity.setDescription(description);
         var dietMeal = new MealDietEntity();
+        if(id != null){
+            dietMeal.setId(dietEditService.getDietById(id).getMeals().iterator().next().getId());
+        }
         dietMeal.setDiet(dietEntity);
         dietMeal.setMeal(mealEditService.getMealById(mealId));
         var mealList = new LinkedList<MealDietEntity>();
