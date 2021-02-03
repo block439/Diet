@@ -27,7 +27,6 @@ public class EditMealRequest {
     private String name;
     private String recipe;
     private String photo;
-    //TODO edit tego productu na jakiś zbiór danych.
     private Long productId1;
     private List<MealProductEntity> product;
 
@@ -53,10 +52,13 @@ public class EditMealRequest {
         mealEntity.setPhotoEntity(new PhotoEntity(photo,mealEntity));
         var mealProduct = new MealProductEntity();
         if(id != null) {
-            mealProduct.setId(mealEditService.getMealById(id).getProducts().iterator().next().getId());
+            if(mealEditService.getMealById(id).getProducts().iterator().next().getProduct().getId() == productId1)
+                mealProduct.setId(mealEditService.getMealById(id).getProducts().iterator().next().getId());
+           mealProduct = new MealProductEntity(mealEditService.getMealById(id),productEditService.getProductById(productId1));
         }
-        mealProduct.setMeal(mealEntity);
-        mealProduct.setProduct(productEditService.getProductById(productId1));
+            mealProduct.setMeal(mealEntity);
+            mealProduct.setProduct(productEditService.getProductById(productId1));
+
         var productsList = new LinkedList<MealProductEntity>();
         productsList.add(mealProduct);
         mealEntity.setProducts(productsList);
@@ -105,11 +107,11 @@ public class EditMealRequest {
         this.productId1 = productId1;
     }
 
-    public List<MealProductEntity> getProduct() {
+    public List<MealProductEntity> getProducts() {
         return product;
     }
 
-    public void setProduct(List<MealProductEntity> product) {
+    public void setProducts(List<MealProductEntity> product) {
         this.product = product;
     }
 }

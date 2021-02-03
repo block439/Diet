@@ -1,7 +1,6 @@
 package pl.jazapp.app.diet.meals.products;
 
 
-import pl.jazapp.app.diet.meals.MealEntity;
 
 import javax.persistence.Embeddable;
 import java.io.Serializable;

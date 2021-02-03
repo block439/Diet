@@ -1,6 +1,7 @@
 package pl.jazapp.app.diet;
 
 
+import org.hibernate.annotations.Cascade;
 import pl.jazapp.app.auctions.parameters.ParameterEntity;
 import pl.jazapp.app.diet.meals.MealDietEntity;
 import pl.jazapp.app.users.UserEntity;
@@ -26,7 +27,8 @@ public class DietEntity {
     @Column(name="description")
     private String description;
 
-    @OneToMany(mappedBy = "diet", cascade = CascadeType.MERGE, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "diet",  orphanRemoval = true, fetch = FetchType.EAGER)
+    @Cascade({org.hibernate.annotations.CascadeType.MERGE, org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     private List<MealDietEntity> meals = new ArrayList<>();
 
     @OneToMany(mappedBy = "diet", cascade = CascadeType.ALL, orphanRemoval = true)

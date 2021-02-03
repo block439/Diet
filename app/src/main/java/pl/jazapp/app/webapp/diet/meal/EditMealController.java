@@ -10,7 +10,6 @@ import pl.jazapp.app.diet.meals.products.*;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.util.LinkedList;
 import java.util.List;
 
 @Named
@@ -48,9 +47,8 @@ public class EditMealController {
         mealRequest.mealEditService = mealEditService;
 
         var meal = mealRequest.toMealEntity();
-
-
         mealEditService.saveMealProduct(meal.getProducts().iterator().next());
+
         return "/diets/meals/list.xhtml?faces-redirect=true";
     }
 
