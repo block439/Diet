@@ -2,9 +2,6 @@ package pl.jazapp.app.diet;
 
 
 
-import pl.jazapp.app.auctions.parameters.ParameterEntity;
-import pl.jazapp.app.diet.meals.MealEntity;
-
 import javax.persistence.*;
 import java.util.Objects;
 

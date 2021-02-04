@@ -29,7 +29,7 @@ public class LoginFilter extends HttpFilter {
     private boolean isSiteAllowed(HttpServletRequest req) {
         return "/login.xhtml".equals(req.getServletPath())
                 || "/register.xhtml".equals(req.getServletPath())
-                || ("/index1.xhtml").equals(req.getServletPath())
+                || ("/index.xhtml").equals(req.getServletPath())
                 || ("/index.xhtml").equals(req.getServletPath());
     }
 

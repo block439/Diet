@@ -2,7 +2,6 @@ package pl.jazapp.app.diet;
 
 
 import org.hibernate.annotations.Cascade;
-import pl.jazapp.app.auctions.parameters.ParameterEntity;
 import pl.jazapp.app.diet.meals.MealDietEntity;
 import pl.jazapp.app.users.UserEntity;
 
@@ -75,6 +74,22 @@ public class DietEntity {
 
     public void setMeals(List<MealDietEntity> meals) {
         this.meals = meals;
+    }
+
+    public List<UserEntity> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<UserEntity> users) {
+        this.users = users;
+    }
+
+    public List<DietParameterEntity> getParameters() {
+        return parameters;
+    }
+
+    public void setParameters(List<DietParameterEntity> parameters) {
+        this.parameters = parameters;
     }
 
     @Override

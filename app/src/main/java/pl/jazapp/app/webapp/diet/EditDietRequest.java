@@ -5,6 +5,7 @@ import pl.jazapp.app.diet.DietEditService;
 import pl.jazapp.app.diet.DietEntity;
 import pl.jazapp.app.diet.meals.MealDietEntity;
 import pl.jazapp.app.diet.meals.MealEditService;
+import pl.jazapp.app.diet.meals.MealEntity;
 import pl.jazapp.app.webapp.diet.meal.EditMealRequest;
 
 import javax.enterprise.context.RequestScoped;
@@ -28,6 +29,7 @@ public class EditDietRequest {
     private String title;
     private String description;
     private Long mealId;
+    private MealEntity meal;
 
     public EditDietRequest(){}
 
@@ -94,5 +96,13 @@ public class EditDietRequest {
 
     public void setMealId(Long mealId) {
         this.mealId = mealId;
+    }
+
+    public MealEntity getMeal() {
+        return meal;
+    }
+
+    public void setMeal(Long mealId) {
+        this.meal = mealEditService.getMealById(mealId);
     }
 }

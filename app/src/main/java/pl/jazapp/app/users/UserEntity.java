@@ -1,14 +1,11 @@
 package pl.jazapp.app.users;
 
 
-import org.hibernate.annotations.ManyToAny;
-import pl.jazapp.app.auctions.AuctionEntity;
-import pl.jazapp.app.categories.CategoriesEntity;
 import pl.jazapp.app.diet.DietEntity;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.List;
+
 
 @Entity
 @Table(name = "users")

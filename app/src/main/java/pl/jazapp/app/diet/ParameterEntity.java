@@ -1,15 +1,12 @@
-package pl.jazapp.app.auctions.parameters;
+package pl.jazapp.app.diet;
 
 
-import pl.jazapp.app.auctions.AuctionEntity;
-import pl.jazapp.app.auctions.AuctionParameterId;
 import pl.jazapp.app.diet.DietParameterEntity;
 import pl.jazapp.app.diet.meals.MealDietEntity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Table(name="parameter")
