@@ -7,43 +7,47 @@
 >
 <h:head>
     <title>Diet IT</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js" type="text/css"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" type="text/css"></script>
+    <h:outputStylesheet name="main.css" library="css"/>
+    <h:outputStylesheet name="bootstrap.css" library="css"/>
+
 </h:head>
 
 <h:body>
 
-    <nav class="navbar navbar-inverse" style="background-color: #5cb85c">
+    <nav class="navbar bg-success navbar-dark navbar-expand-md order-first">
         <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Diet IT</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Strona główna</a></li>
-                    <li><a href="about.xhtml">O nas</a></li>
+            <h:link styleClass="navbar-brand">
+                DietIt
+            </h:link>
+            <button class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <h:link class="nav-link" outcome="index.xhtml">Strona główna</h:link>
+                    </li>
+
+                    <li class="nav-item">
+                        <h:link class="nav-link" outcome="about.xhtml">O nas</h:link>
+                    </li>
+
+                    <li class="nav-item">
+                        <h:link class="nav-link" outcome="contact.xhtml">Kontakt</h:link>
+                    </li>
                 </ul>
+
             </div>
         </div>
     </nav>
 
-    <div class="container-fluid text-center">
-        <div class="row content">
-            <div class="col-sm-2 sidenav">
+    <div class="container-fluid bg-dark">
+    <div class="container">
+    <div class="row">
 
-            </div>
-            <div class="col-sm-8 ">
+            <div class="col-12">
                 <h:form StyleClass="form-base">
-
-
-
-                    <div class="form-group">
+                    <div class="form-group mt-5 ">
                         <h:inputText id="login" styleClass="form-control" a:placeholder="Username"
                                      value="#{loginRequest.username}">
                             <f:validator validatorId="loginValidator"/>
@@ -59,22 +63,16 @@
                         <h:inputSecret id="password" styleClass="form-control" a:placeholder="Password"
                                        value="#{loginRequest.password}"/>
                     </div>
-                    <div class="form-group" >
+                    <div class="form-group text-center" >
                         <h:commandButton  styleClass="btn btn-primary" value="Login" action="#{loginController.login(loginRequest)}"/><br/>
                         <h:outputLink styleClass="small" value="register.xhtml">Signup</h:outputLink>
                     </div>
                 </h:form>
             </div>
-            <div class="col-sm-2 sidenav">
-                <div class="well">
-                    <p>ADS</p>
-                </div>
-                <div class="well">
-                    <p>ADS</p>
-                </div>
             </div>
         </div>
     </div>
+
 
     <footer class="container-fluid text-center">
         <p>Footer Text</p>

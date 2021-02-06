@@ -68,4 +68,5 @@ public class MealProductEntity {
     public void setProduct(ProductEntity productEntity) {
         this.product = productEntity;
     }
+
 }

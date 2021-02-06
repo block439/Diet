@@ -9,13 +9,55 @@
 
 >
 <h:head>
-    <h:outputStylesheet name="main.css" library="css"/>
     <h:outputStylesheet name="bootstrap.css" library="css"/>
+    <h:outputStylesheet name="main.css" library="css"/>
 </h:head>
 <h:body>
 
+    <nav class="navbar bg-success navbar-dark navbar-expand-md order-first">
+        <div class="container-fluid">
+            <h:link styleClass="navbar-brand">
+                DietIt
+            </h:link>
+            <button class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <h:link class="nav-link" outcome="/diets/products/edit">Produkty edycja</h:link>
+                    </li>
 
-    <h:form StyleClass="form-base">
+                    <li class="nav-item">
+                        <h:link class="nav-link" outcome="/diets/products/list">Produkty Lista</h:link>
+                    </li>
+
+                    <li class="nav-item">
+                        <h:link class="nav-link" outcome="/diets/meals/edit">Posiłki edycja</h:link>
+                    </li>
+
+                    <li class="nav-item">
+                        <h:link class="nav-link" outcome="/diets/meals/list">Posiłki lista</h:link>
+                    </li>
+
+                    <li class="nav-item">
+                        <h:link class="nav-link" outcome="/diets/edit">Diety edycja</h:link>
+                    </li>
+
+                    <li class="nav-item">
+                        <h:link class="nav-link" outcome="/diets/list">Diety lista</h:link>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid bg-dark">
+    <div class="container">
+    <div class="row text-center col-12">
+        <div class="col-12">
+    <h:form StyleClass="form-base col-12">
         <h:inputHidden id="id" value="#{editMealController.mealRequest().id}"/>
         <div  class="form-group">
             <h:inputText id="name" styleClass="form-control" a:placeholder="Name"
@@ -36,13 +78,39 @@
         </div>
 
         <div class="form-group">
-            <h:selectOneMenu id="product" value="#{editMealController.mealRequest().productId1}">
+            <h:selectOneMenu id="product1" value="#{editMealController.mealRequest().productId1}">
                 <f:selectItems value="#{editMealController.listOfAllProducts}"
                                var ="it"
                                itemLabel="#{it.name}"
                                itemValue="#{it.id}"/>
             </h:selectOneMenu>
+            <h:inputText converter="javax.faces.Double" id="amount1" a:placeholder="Ilość" value="#{editMealController.mealRequest().amount1}" >
+            </h:inputText>
         </div>
+
+        <div class="form-group">
+            <h:selectOneMenu id="product2" value="#{editMealController.mealRequest().productId2}">
+                <f:selectItems value="#{editMealController.listOfAllProducts}"
+                               var ="it"
+                               itemLabel="#{it.name}"
+                               itemValue="#{it.id}"/>
+            </h:selectOneMenu>
+            <h:inputText converter="javax.faces.Double" id="amount2" a:placeholder="Ilość" value="#{editMealController.mealRequest().amount2}" >
+            </h:inputText>
+        </div>
+
+        <div class="form-group">
+            <h:selectOneMenu id="product3" value="#{editMealController.mealRequest().productId3}">
+                <f:selectItems value="#{editMealController.listOfAllProducts}"
+                               var ="it"
+                               itemLabel="#{it.name}"
+                               itemValue="#{it.id}"/>
+            </h:selectOneMenu>
+            <h:inputText converter="javax.faces.Double" id="amount3" a:placeholder="Ilość" value="#{editMealController.mealRequest().amount3}" >
+            </h:inputText>
+        </div>
+
+
 
 
         <div class="form-group">
@@ -50,6 +118,7 @@
         </div>
 
     </h:form>
+    </div></div></div></div>
 
 </h:body>
 </html>

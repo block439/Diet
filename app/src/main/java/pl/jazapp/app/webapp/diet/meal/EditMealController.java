@@ -51,16 +51,35 @@ public class EditMealController {
 
         mealEditService.saveMeal(meal);
 
-        var mealProduct = new MealProductEntity();
-        if(meal.getId() != null && !mealEditService.getMealById(meal.getId()).getProducts().isEmpty()) {
-                mealProduct.setId(mealEditService.getMealById(meal.getId()).getProducts().iterator().next().getId());
-                meal.getProducts().clear();
-        }
-        mealProduct.setMeal(meal);
-        mealProduct.setProduct(productEditService.getProductById(mealRequest.getProductId1()));
 
         var productsList = new LinkedList<MealProductEntity>();
-        productsList.add(mealProduct);
+        var products = mealEditService.getMealById(meal.getId()).getProducts().iterator();
+
+        for(int i = 0; i < 3;i++) {
+            var mealProduct = new MealProductEntity();
+            if (meal.getId() != null && !mealEditService.getMealById(meal.getId()).getProducts().isEmpty() && products.hasNext()) {
+                    mealProduct.setId(products.next().getId());
+            }
+            mealProduct.setMeal(meal);
+            switch(i){
+                case 0:
+                    mealProduct.setProduct(productEditService.getProductById(mealRequest.getProductId1()));
+                    mealProduct.setAmount(mealRequest.getAmount1());
+                    break;
+                case 1:
+                    mealProduct.setProduct(productEditService.getProductById(mealRequest.getProductId2()));
+                    mealProduct.setAmount(mealRequest.getAmount2());
+                    break;
+                case 2:
+                    mealProduct.setProduct(productEditService.getProductById(mealRequest.getProductId3()));
+                    mealProduct.setAmount(mealRequest.getAmount3());
+                    break;
+                default: break;
+            }
+
+            productsList.add(mealProduct);
+        }
+        meal.getProducts().clear();
         meal.setProducts(productsList);
 
 

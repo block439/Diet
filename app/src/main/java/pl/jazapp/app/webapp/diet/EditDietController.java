@@ -58,13 +58,14 @@ public class EditDietController {
         var dietMeal = new MealDietEntity();
         if(diet.getId() != null && !dietEditService.getDietById(diet.getId()).getMeals().isEmpty()){
            dietMeal.setId(dietEditService.getDietById(diet.getId()).getMeals().iterator().next().getId());
-           diet.getMeals().clear();
+
         }
         dietMeal.setDiet(diet);
         dietMeal.setMeal(mealEditService.getMealById(dietRequest.getMealId()));
 
         var mealList = new LinkedList<MealDietEntity>();
         mealList.add(dietMeal);
+        diet.getMeals().clear();
         diet.setMeals(mealList);
 
 
