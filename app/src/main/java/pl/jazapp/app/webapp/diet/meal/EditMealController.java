@@ -10,6 +10,7 @@ import pl.jazapp.app.diet.meals.products.*;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.LinkedList;
 import java.util.List;
 
 @Named
@@ -47,7 +48,24 @@ public class EditMealController {
         mealRequest.mealEditService = mealEditService;
 
         var meal = mealRequest.toMealEntity();
-        mealEditService.saveMealProduct(meal.getProducts().iterator().next());
+
+        mealEditService.saveMeal(meal);
+
+        var mealProduct = new MealProductEntity();
+        if(meal.getId() != null && !mealEditService.getMealById(meal.getId()).getProducts().isEmpty()) {
+                mealProduct.setId(mealEditService.getMealById(meal.getId()).getProducts().iterator().next().getId());
+                meal.getProducts().clear();
+        }
+        mealProduct.setMeal(meal);
+        mealProduct.setProduct(productEditService.getProductById(mealRequest.getProductId1()));
+
+        var productsList = new LinkedList<MealProductEntity>();
+        productsList.add(mealProduct);
+        meal.setProducts(productsList);
+
+
+
+        mealEditService.saveMeal(meal);
 
         return "/diets/meals/list.xhtml?faces-redirect=true";
     }

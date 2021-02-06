@@ -5,6 +5,7 @@ import pl.jazapp.app.ParameterRetriever;
 import pl.jazapp.app.diet.DietEditService;
 import pl.jazapp.app.diet.DietEntity;
 import pl.jazapp.app.diet.DietSearchService;
+import pl.jazapp.app.diet.meals.MealDietEntity;
 import pl.jazapp.app.diet.meals.MealEditService;
 import pl.jazapp.app.diet.meals.MealEntity;
 import pl.jazapp.app.diet.meals.MealSearchService;
@@ -12,6 +13,7 @@ import pl.jazapp.app.diet.meals.MealSearchService;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.LinkedList;
 import java.util.List;
 
 @Named
@@ -51,7 +53,22 @@ public class EditDietController {
         dietRequest.dietEditService = dietEditService;
         dietRequest.mealEditService = mealEditService;
         var diet = dietRequest.toDietEntity();
-        dietEditService.saveMealDiet(diet.getMeals().iterator().next());
+        dietEditService.saveDiet(diet);
+
+        var dietMeal = new MealDietEntity();
+        if(diet.getId() != null && !dietEditService.getDietById(diet.getId()).getMeals().isEmpty()){
+           dietMeal.setId(dietEditService.getDietById(diet.getId()).getMeals().iterator().next().getId());
+           diet.getMeals().clear();
+        }
+        dietMeal.setDiet(diet);
+        dietMeal.setMeal(mealEditService.getMealById(dietRequest.getMealId()));
+
+        var mealList = new LinkedList<MealDietEntity>();
+        mealList.add(dietMeal);
+        diet.setMeals(mealList);
+
+
+        dietEditService.saveDiet(diet);
         return "/diets/list.xhtml?faces-redirect=true";
     }
 

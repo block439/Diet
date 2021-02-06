@@ -41,7 +41,6 @@ public class EditMealRequest {
         this.photo = mealEntity.getPhotoEntity().getUrl();
         this.product = mealEntity.getProducts();
         this.productId1 = product.iterator().next().getProduct().getId();
-        //TODO przemyslec jak iterowac na tabeli laczacej i jednoczesnie na tabeli do niej połączonej
     }
 
     public MealEntity toMealEntity(){
@@ -50,18 +49,6 @@ public class EditMealRequest {
         mealEntity.setName(name);
         mealEntity.setRecipe(recipe);
         mealEntity.setPhotoEntity(new PhotoEntity(photo,mealEntity));
-        var mealProduct = new MealProductEntity();
-        if(id != null) {
-            if(mealEditService.getMealById(id).getProducts().iterator().next().getProduct().getId() == productId1)
-                mealProduct.setId(mealEditService.getMealById(id).getProducts().iterator().next().getId());
-           mealProduct = new MealProductEntity(mealEditService.getMealById(id),productEditService.getProductById(productId1));
-        }
-            mealProduct.setMeal(mealEntity);
-            mealProduct.setProduct(productEditService.getProductById(productId1));
-
-        var productsList = new LinkedList<MealProductEntity>();
-        productsList.add(mealProduct);
-        mealEntity.setProducts(productsList);
 
         return mealEntity;
     }

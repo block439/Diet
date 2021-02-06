@@ -27,7 +27,7 @@ public class DietEntity {
     private String description;
 
     @OneToMany(mappedBy = "diet",  orphanRemoval = true, fetch = FetchType.EAGER)
-    @Cascade({org.hibernate.annotations.CascadeType.MERGE, org.hibernate.annotations.CascadeType.SAVE_UPDATE})
+    @Cascade({org.hibernate.annotations.CascadeType.ALL})
     private List<MealDietEntity> meals = new ArrayList<>();
 
     @OneToMany(mappedBy = "diet", cascade = CascadeType.ALL, orphanRemoval = true)

@@ -15,13 +15,11 @@ public class MealDietEntity {
     @EmbeddedId
     private MealDietEntityId id = new MealDietEntityId();
 
-    @ManyToOne( fetch = FetchType.EAGER)
-    @Cascade({org.hibernate.annotations.CascadeType.MERGE, org.hibernate.annotations.CascadeType.SAVE_UPDATE})
+    @ManyToOne( fetch = FetchType.EAGER,  cascade = CascadeType.MERGE)
     @MapsId("mealId")
     private MealEntity meal;
 
-    @ManyToOne( fetch = FetchType.EAGER)
-    @Cascade({org.hibernate.annotations.CascadeType.MERGE, org.hibernate.annotations.CascadeType.SAVE_UPDATE})
+    @ManyToOne( fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @MapsId("dietId")
     private DietEntity diet;
 

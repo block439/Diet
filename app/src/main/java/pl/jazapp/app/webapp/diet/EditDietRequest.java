@@ -29,7 +29,6 @@ public class EditDietRequest {
     private String title;
     private String description;
     private Long mealId;
-    private MealEntity meal;
 
     public EditDietRequest(){}
 
@@ -45,26 +44,10 @@ public class EditDietRequest {
         dietEntity.setId(id);
         dietEntity.setTitle(title);
         dietEntity.setDescription(description);
-        var dietMeal = new MealDietEntity();
-        if(id != null){
-            dietMeal.setId(dietEditService.getDietById(id).getMeals().iterator().next().getId());
-        }
-        dietMeal.setDiet(dietEntity);
-        dietMeal.setMeal(mealEditService.getMealById(mealId));
-        var mealList = new LinkedList<MealDietEntity>();
-        mealList.add(dietMeal);
-        dietEntity.setMeals(mealList);
         return dietEntity;
     }
 
 
-    public MealEditService getMealEditService() {
-        return mealEditService;
-    }
-
-    public void setMealEditService(MealEditService mealEditService) {
-        this.mealEditService = mealEditService;
-    }
 
     public Long getId() {
         return id;
@@ -98,11 +81,5 @@ public class EditDietRequest {
         this.mealId = mealId;
     }
 
-    public MealEntity getMeal() {
-        return meal;
-    }
 
-    public void setMeal(Long mealId) {
-        this.meal = mealEditService.getMealById(mealId);
-    }
 }

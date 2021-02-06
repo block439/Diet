@@ -34,7 +34,7 @@ public class MealEntity {
     private List<MealDietEntity> diets = new ArrayList<>();
 
     @OneToMany(mappedBy = "meal", orphanRemoval = true, fetch = FetchType.EAGER)
-    @Cascade({org.hibernate.annotations.CascadeType.MERGE, org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.DELETE})
+    @Cascade({org.hibernate.annotations.CascadeType.ALL})
     private List<MealProductEntity> products = new ArrayList<>();
 
 
