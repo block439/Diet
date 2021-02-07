@@ -78,3 +78,11 @@ databaseChangeLog:
         relativeToChangelogFile: true
         splitstatements: false
         path: clear.sql
+
+  - changeSet:
+      id: dietUpdate2
+      author: Aleksander Reiter
+      sqlFile:
+        relativeToChangelogFile: true
+        splitstatements: false
+        path: dietUpdate2.sql

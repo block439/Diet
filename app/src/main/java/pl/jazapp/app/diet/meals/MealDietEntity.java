@@ -2,7 +2,6 @@ package pl.jazapp.app.diet.meals;
 
 
 
-import org.hibernate.annotations.Cascade;
 import pl.jazapp.app.diet.DietEntity;
 
 import javax.persistence.*;
@@ -23,8 +22,11 @@ public class MealDietEntity {
     @MapsId("dietId")
     private DietEntity diet;
 
-    @Column(name = "weeknumber")
-    private Long weekNumber;
+    @Column(name = "day_number")
+    private Long day_number;
+
+    @Column(name ="meal_number")
+    private Long meal_number;
 
 
     public MealDietEntity(){}
@@ -59,12 +61,20 @@ public class MealDietEntity {
         this.diet = diet;
     }
 
-    public Long getWeekNumber() {
-        return weekNumber;
+    public Long getDay_number() {
+        return day_number;
     }
 
-    public void setWeekNumber(Long weekNumber) {
-        this.weekNumber = weekNumber;
+    public void setDay_number(Long weekNumber) {
+        this.day_number = weekNumber;
+    }
+
+    public Long getMeal_number() {
+        return meal_number;
+    }
+
+    public void setMeal_number(Long meal_number) {
+        this.meal_number = meal_number;
     }
 
     @Override
