@@ -2,6 +2,7 @@ package pl.jazapp.app.diet.meals;
 
 
 
+import org.hibernate.annotations.Cascade;
 import pl.jazapp.app.diet.DietEntity;
 
 import javax.persistence.*;
@@ -14,7 +15,7 @@ public class MealDietEntity {
     @EmbeddedId
     private MealDietEntityId id = new MealDietEntityId();
 
-    @ManyToOne( fetch = FetchType.EAGER,  cascade = CascadeType.MERGE)
+    @ManyToOne( fetch = FetchType.EAGER)
     @MapsId("mealId")
     private MealEntity meal;
 

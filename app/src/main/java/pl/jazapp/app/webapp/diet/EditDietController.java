@@ -55,16 +55,42 @@ public class EditDietController {
         var diet = dietRequest.toDietEntity();
         dietEditService.saveDiet(diet);
 
-        var dietMeal = new MealDietEntity();
-        if(diet.getId() != null && !dietEditService.getDietById(diet.getId()).getMeals().isEmpty()){
-           dietMeal.setId(dietEditService.getDietById(diet.getId()).getMeals().iterator().next().getId());
-
-        }
-        dietMeal.setDiet(diet);
-        dietMeal.setMeal(mealEditService.getMealById(dietRequest.getMealId()));
 
         var mealList = new LinkedList<MealDietEntity>();
+        var meals = dietEditService.getDietById(diet.getId()).getMeals().iterator();
+
+        for(int i = 0; i<3 ; i++){
+            var dietMeal = new MealDietEntity();
+
+            if(diet.getId() != null && !dietEditService.getDietById(diet.getId()).getMeals().isEmpty() && meals.hasNext()){
+               dietMeal.setId(meals.next().getId());
+            }
+
+            dietMeal.setDiet(diet);
+
+            switch(i){
+                case 0:
+                    dietMeal.setMeal(mealEditService.getMealById(dietRequest.getMealId1()));
+                    dietMeal.setDay_number(dietRequest.getDay_number1());
+                    dietMeal.setMeal_number(dietRequest.getMeal_number1());
+                    break;
+                case 1:
+                    dietMeal.setMeal(mealEditService.getMealById(dietRequest.getMealId2()));
+                    dietMeal.setDay_number(dietRequest.getDay_number2());
+                    dietMeal.setMeal_number(dietRequest.getMeal_number2());
+                    break;
+                case 2:
+                    dietMeal.setMeal(mealEditService.getMealById(dietRequest.getMealId3()));
+                    dietMeal.setDay_number(dietRequest.getDay_number3());
+                    dietMeal.setMeal_number(dietRequest.getMeal_number3());
+                    break;
+                default:break;
+            }
+
         mealList.add(dietMeal);
+        }
+
+
         diet.getMeals().clear();
         diet.setMeals(mealList);
 

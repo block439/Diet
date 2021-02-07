@@ -72,12 +72,42 @@
         </div>
 
         <div class="form-group">
-            <h:selectOneMenu id="product" value="#{editDietController.dietRequest().mealId}">
+            <h:selectOneMenu id="meal1" value="#{editDietController.dietRequest().mealId1}">
                 <f:selectItems value="#{editDietController.listOfAllMeals}"
                                var ="it"
                                itemLabel="#{it.name}"
                                itemValue="#{it.id}"/>
             </h:selectOneMenu>
+            <h:inputText converter="javax.faces.Long" id="daynumber1" a:placeholder="Numer dnia" value="#{editDietController.dietRequest().day_number1}" >
+            </h:inputText>
+            <h:inputText converter="javax.faces.Long" id="mealnumber1" a:placeholder="Posiłek numer" value="#{editDietController.dietRequest().meal_number1}" >
+            </h:inputText>
+        </div>
+
+        <div class="form-group">
+            <h:selectOneMenu id="meal2" value="#{editDietController.dietRequest().mealId2}">
+                <f:selectItems value="#{editDietController.listOfAllMeals}"
+                               var ="it"
+                               itemLabel="#{it.name}"
+                               itemValue="#{it.id}"/>
+            </h:selectOneMenu>
+            <h:inputText converter="javax.faces.Long" id="daynumber2" a:placeholder="Numer dnia" value="#{editDietController.dietRequest().day_number2}" >
+            </h:inputText>
+            <h:inputText converter="javax.faces.Long" id="mealnumber2" a:placeholder="Posiłek numer" value="#{editDietController.dietRequest().meal_number2}" >
+            </h:inputText>
+        </div>
+
+        <div class="form-group">
+            <h:selectOneMenu id="meal3" value="#{editDietController.dietRequest().mealId3}">
+                <f:selectItems value="#{editDietController.listOfAllMeals}"
+                               var ="it"
+                               itemLabel="#{it.name}"
+                               itemValue="#{it.id}"/>
+            </h:selectOneMenu>
+            <h:inputText converter="javax.faces.Long" id="daynumber3" a:placeholder="Numer dnia" value="#{editDietController.dietRequest().day_number3}" >
+            </h:inputText>
+            <h:inputText converter="javax.faces.Long" id="mealnumber3" a:placeholder="Posiłek numer" value="#{editDietController.dietRequest().meal_number3}" >
+            </h:inputText>
         </div>
 
 
